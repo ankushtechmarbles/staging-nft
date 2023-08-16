@@ -1,0 +1,170 @@
+/* ========= Contact Page ============ */
+.bg-navbar,
+.contact-page .hero,
+.contact-page .apply-section{
+  background: #FFF7E3;
+} 
+.contact-page .hero h1{
+  color: #00aaff;
+	font-family: var(--font-family-sequel100black-95-regular);
+	font-size: var(--font-size-xxl);
+	font-weight: 400;
+	letter-spacing: 0;
+	line-height: 58px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.apply-section .card{ 
+	background-color: var(--white);
+	border: 1px solid;
+	border-top-color: currentcolor;
+	border-right-color: currentcolor;
+	border-bottom-color: currentcolor;
+	border-left-color: currentcolor;
+	border-color: var(--black);
+	border-radius: 16px;
+	box-shadow: 3px 3px 0px #1a1a1a;
+	padding: 0 24px;
+	margin-bottom: 32px;
+}
+.apply-section .card .h-90{ 
+   height: 90px; 
+
+}
+.apply-section .card h3{
+	color: var(--black);
+	font-family: var(--font-family-raleway);
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.contact-page .form-section{ 
+  background-color: var(--lily-white);
+  border: 1px none; 
+}
+
+.contact-from .form-control-inline-text {
+  color: var(--onyx);
+	font-family: var(--font-family-sequel100black-95-regular);
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 400;
+  margin: 0 1rem;
+}
+
+.contact-from input,
+.contact-from input:focus,
+.contact-from input:focus-visible{
+  min-width: 200px;
+  max-width: 400px;
+  border: 0;
+  border-bottom-color: #0d6efd;
+  border-bottom-style: solid;
+  border-bottom-width: 2px; 
+  border-radius: 0;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+  height: 42px;
+  color: var(--onyx);
+	font-family: var(--font-family-sequel100black-95-regular);
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 400;
+	outline: 0; 
+}
+
+.contact-from .btn-send{
+  width: 8rem;
+  height: 8rem;
+	color: var(--new-car);
+	font-family: var(--font-family-raleway);
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 0;
+  text-align: center;
+}
+
+/* ========= Button ============ */
+.btn.button-primary,
+.btn.button-primary:hover {
+	cursor: pointer; 
+	padding: 13px 37px;
+	color: var(--white);
+	font-family: var(--font-family-raleway);
+	font-size: var(--font-size-s);
+	font-weight: 500;
+	letter-spacing: 0;
+	font-style: normal;
+	background-color: var(--new-car);
+	border: 1px solid;
+	border-color: var(--black); 
+	text-transform: capitalize; 
+	flex-direction: row;
+	border-radius: 41px;
+	box-shadow: 3px 3px 0px #1A1A1A; 
+	text-decoration: none;
+}
+
+.btn.button-success,
+.btn.button-success:hover {
+	cursor: pointer; 
+	padding: 13px 37px;
+	color: var(--black);
+	font-family: var(--font-family-raleway);
+	font-size: var(--font-size-s);
+	font-weight: 500;
+	letter-spacing: 0;
+	font-style: normal;
+	background-color: var(--chateau-green);
+	border: 1px solid;
+	border-color: var(--black); 
+	text-transform: capitalize; 
+	flex-direction: row;
+	border-radius: 41px;
+	box-shadow: 3px 3px 0px #1A1A1A; 
+	text-decoration: none;
+} 
+
+.btn.button-warning,
+.btn.button-warning:hover {
+	cursor: pointer; 
+	padding: 13px 37px;
+	color: var(--black);
+	font-family: var(--font-family-raleway);
+	font-size: var(--font-size-s);
+	font-weight: 500;
+	letter-spacing: 0;
+	font-style: normal;
+	background-color: var(--saffron);
+	border: 1px solid;
+	border-color: var(--black); 
+	text-transform: capitalize; 
+	flex-direction: row;
+	border-radius: 41px;
+	box-shadow: 3px 3px 0px #1A1A1A; 
+	text-decoration: none;
+} 
+
+.btn.button-strawberry,
+.btn.button-strawberry:hover {
+	cursor: pointer; 
+	padding: 13px 37px;
+	color: var(--black);
+	font-family: var(--font-family-raleway);
+	font-size: var(--font-size-s);
+	font-weight: 500;
+	letter-spacing: 0;
+	font-style: normal;
+	background-color: var(--wild-strawberry);
+	border: 1px solid;
+	border-color: var(--black); 
+	text-transform: capitalize; 
+	flex-direction: row;
+	border-radius: 41px;
+	box-shadow: 3px 3px 0px #1A1A1A; 
+	text-decoration: none;
+} 
+/* ========= /. Button ============ */

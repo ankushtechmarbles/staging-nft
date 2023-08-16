@@ -1,0 +1,1 @@
+import{j as r,k as o,a,G as t}from"./index.c3f8b9a9.js";import{H as s}from"./HumanityNavBar.b3d9e79e.js";import"./iconBase.91661c24.js";import"./index.esm.3afedc01.js";const d=()=>r(o,{children:[a(s,{}),a(t,{background:"url(/creator//humanityRocks/images/Background.png)",backgroundColor:"black",paddingTop:24,height:"100%",width:"100%"})]});export{d as default};

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="640" height="480" viewBox="0 0 640 480" xml:space="preserve">
+<desc>Created with Fabric.js 3.6.6</desc>
+<defs>
+</defs>
+<g transform="matrix(6.33 0 0 4.74 320.5 240.08)"  >
+<polygon style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"  points="-50,-50 -50,50 50,50 50,-50 " />
+</g>
+<g transform="matrix(1.56 0 0 1.56 236.78 236.78)"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;"  x="-175" y="-175" rx="0" ry="0" width="350" height="350" />
+</g>
+<g transform="matrix(1 0 0 1 -34 -34)"  >
+<g style=""   >
+</g>
+</g>
+<g transform="matrix(2.37 0 0 2.37 321.85 240)" style=""  >
+		<text xml:space="preserve" font-family="'Oswald', sans-serif" font-size="100" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-82.5" y="15.08" style="stroke-width: 1; font-family: 'Oswald', sans-serif; font-size: 48px; font-style: normal; font-weight: normal; fill: rgb(0,0,0); ">No Image</tspan></text>
+</g>
+</svg>

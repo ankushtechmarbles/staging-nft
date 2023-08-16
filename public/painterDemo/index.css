@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Sequel';
+  src: local('Sequel'), url(fonts/Sequel.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'DigitalDisplay';
+  src: local('DigitalDisplay'),url(fonts/DS-DIGI.TTF) format('truetype');
+}
+
+body, html {
+  height: 100%;
+}
+
+div#root {
+  height: 100%;
+}

@@ -1,0 +1,181 @@
+.course-page{ 
+  background-color: var(--course-page);
+}
+
+.raleway-medium-mountain-mist-14px {
+  --black: #000000;
+  --mountain-mist: #999999;
+  --font-family-raleway: "Raleway", Helvetica;
+  color: var(--mountain-mist);
+  font-family: var(--font-family-raleway);
+  font-size: var(--font-size-14);
+  font-style: normal;
+  font-weight: 500;
+
+}
+ 
+.sequel100black-95-regular-normal-onyx-20px{
+  color: var(--onyx);
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+  font-style: normal;
+}
+ 
+.span1 {
+  color: var(--new-car);
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+}
+
+.span3 {
+  color: var(--saffron);
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+}
+
+.span6 {
+  color: var(--coral);
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+}
+
+.span4 {
+  color: var(--radical-red);
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-20);
+  font-weight: 400;
+}
+.whats-included-in-the-courses {
+    letter-spacing: 0;
+    line-height: normal;
+}
+.sequel100black-95-regular-normal-new-car-32px
+ {
+  color: var(--new-car);
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-32);
+  font-weight: 400;
+  font-style: normal;
+}
+.sequel100black-95-regular-normal-white-32px-2
+ {
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-32);
+  font-weight: 400;
+  font-style: normal;
+}
+.sequel100black-95-regular-normal-white-32px
+ {
+  color: var(--white);
+  font-family: var(--font-family-sequel100black-95-regular);
+  font-size: var(--font-size-32);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.number {
+  -webkit-text-stroke: 2px var(--jaffa);
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: -2px;
+  margin-top: -3px;
+  min-height: 48px;
+  min-width: 68px;
+}
+.number-1 {
+  -webkit-text-stroke: 2px var(--wild-strawberry);
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: -2px;
+  margin-top: -3px;
+  min-height: 48px;
+  min-width: 56px;
+}
+.number-2 {
+  -webkit-text-stroke: 2px var(--chateau-green);
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: -2px;
+  margin-top: -3px;
+  min-height: 48px;
+  min-width: 68px;
+}
+.text {
+  -webkit-text-stroke: 1px var(--white);
+  align-self: center;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 4px;
+  min-height: 28px;
+  min-width: 10px;
+}
+.raleway-medium-jaffa-24px{ 
+  color: var(--jaffa);
+  font-family: var(--font-family-raleway);
+  font-size: var(--font-size-24);
+  font-weight: 500;
+  font-style: normal;
+}
+.raleway-medium-chateau-green-24px
+ {
+  color: var(--chateau-green);
+  font-family: var(--font-family-raleway);
+  font-size: var(--font-size-24);
+  font-weight: 500;
+  font-style: normal;
+}
+.raleway-medium-wild-strawberry-24px
+ {
+  color: var(--wild-strawberry);
+  font-family: var(--font-family-raleway);
+  font-size: var(--font-size-24);
+  font-weight: 500;
+  font-style: normal;
+}
+.course-number {
+  align-items: flex-start;
+  border: 1px none;
+  display: flex;
+  gap: 5px;
+  height: 48px;
+  min-width: 82px;
+}
+
+.raleway-medium-onyx-14px
+{
+  color: var(--onyx);
+  font-family: var(--font-family-raleway);
+  font-size: var(--font-size-14);
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* listing */
+.raleway-normal-onyx-16px{
+  color: var(--onyx);
+  font-family: var(--font-family-raleway);
+  font-size: var(--font-size-16);
+  font-weight: 400;
+  font-style: normal;
+}
+.all-levels {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 2px;
+  margin-left: 24px;
+  min-height: 19px;
+  min-width: 72px;
+}
+
+.category {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 2px;
+  margin-left: 40px;
+  min-height: 19px;
+  min-width: 68px;
+}

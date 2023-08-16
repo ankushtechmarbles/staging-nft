@@ -1,0 +1,1 @@
+import{a}from"./index.c3f8b9a9.js";const t=()=>a("group",{children:a("directionalLight",{color:"black",position:[5,5,2],intensity:.15,castShadow:!0,"shadow-mapSize-width":1024,"shadow-mapSize-height":1024,"shadow-camera-far":100,"shadow-camera-left":-5,"shadow-camera-right":5,"shadow-camera-top":5,"shadow-camera-bottom":-5})});export{t as L};
