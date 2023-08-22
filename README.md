@@ -62,3 +62,59 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## API Routes
+
+#### User Routes
+| Method | URI | Action | Middleware |
+| --- | --- | --- | --- |
+| GET/HEAD | api/user | Closure | api, auth:api |
+| GET/HEAD | api/users | App\Http\Controllers\Api\UserController@index | api, auth:api |
+| POST | api/users | App\Http\Controllers\Api\UserController@store | api, auth:api |
+| GET/HEAD | api/users/{user} | App\Http\Controllers\Api\UserController@show | api, auth:api |
+| PUT/PATCH | api/users/{user} | App\Http\Controllers\Api\UserController@update | api, auth:api |
+| DELETE | api/users/{user} | App\Http\Controllers\Api\UserController@destroy | api, auth:api |
+| GET/HEAD | api/users/{user}/posts | App\Http\Controllers\Api\UserPostController@index | api, auth:api |
+
+#### Draft Routes
+| Method | URI | Action | Middleware | Protected Route | Example Response | 
+| --- | --- | --- | --- |-------| --- |
+| GET/HEAD | api/drafts | App\Http\Controllers\Api\DraftController@index | api, auth:api | False | ```[{"id":1,"title":"Draft 1","body":"This is the body of draft 1","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"},{"id":2,"title":"Draft 2","body":"This is the body of draft 2","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}]``` |
+| POST | api/drafts | App\Http\Controllers\Api\DraftController@store | api, auth:api | True | ```{"id":3,"title":"Draft 3","body":"This is the body of draft 3","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}``` |
+| GET/HEAD | api/drafts/{draft} | App\Http\Controllers\Api\DraftController@show | api, auth:api | False | ```{"id":1,"title":"Draft 1","body":"This is the body of draft 1","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}``` |
+| PUT/PATCH | api/drafts/{draft} | App\Http\Controllers\Api\DraftController@update | api, auth:api | True | ```{"id":1,"title":"Draft 1","body":"This is the body of draft 1","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}``` |
+| DELETE | api/drafts/{draft} | App\Http\Controllers\Api\DraftController@destroy | api, auth:api | True | ```{"message":"Draft deleted successfully"}``` |
+
+#### Competition Routes
+| Method    | URI                                 | Action | Middleware     | Protected Route     | Example Response |
+|-----------|-------------------------------------| --- |----------------|---------------------|------------------|
+| GET/HEAD  | api/competitions                    | App\Http\Controllers\Api\CompetitionController@index | api, auth:api  | false               | ```{"current_page":1,"data":[{"id":1,"title":"Competition 1","body":"This is the body of competition 1","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z","votes":0},{"id":2,"title":"Competition 2","body":"This is the body of competition 2","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z","votes":0},{"id":3,"title":"Competition 3","body":"This is the body of competition 3","user_id":1,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z","votes":0}],"first_page_url":"http:\/\/"```} |
+| POST      | api/competitions                    | App\Http\Controllers\Api\CompetitionController@store | api, auth:api  | false               |                  |
+| GET/HEAD  | api/competitions/{competition}      | App\Http\Controllers\Api\CompetitionController@show | api, auth:api  | false               |                  |
+| PUT/PATCH | api/competitions/{competition}/vote | App\Http\Controllers\Api\CompetitionController@update | api, auth:api  | true                |                  |
+| PUT/PATCH | api/competitions/{competition}      | App\Http\Controllers\Api\CompetitionController@update | api, auth:api  | true * creator only |                  |
+| DELETE    | api/competitions/{competition}      | App\Http\Controllers\Api\CompetitionController@destroy | api, auth:api  | true * admin only   |                  |
+
+#### Community Leaderboard Routes
+| Method | URI | Action | Middleware | Protected Route | Example Response |
+| --- | --- | --- | --- | --- | --- |
+| GET/HEAD | api/leaderboards | App\Http\Controllers\Api\LeaderboardController@index | api, auth:api | false |```[{"id":1,"user_id":1,"score":100,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"},{"id":2,"user_id":2,"score":200,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}]``` |
+| POST | api/leaderboards | App\Http\Controllers\Api\LeaderboardController@store | api, auth:api | true | ```{"id":3,"user_id":1,"score":300,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}``` |
+| GET/HEAD | api/leaderboards/{leaderboard} | App\Http\Controllers\Api\LeaderboardController@show | api, auth:api | false | ```{"id":1,"user_id":1,"score":100,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}``` |
+| PUT/PATCH | api/leaderboards/{leaderboard} | App\Http\Controllers\Api\LeaderboardController@update | api, auth:api | true | ```{"id":1,"user_id":1,"score":100,"created_at":"2021-03-02T20:00:00.000000Z","updated_at":"2021-03-02T20:00:00.000000Z"}``` |
+| DELETE | api/leaderboards/{leaderboard} | App\Http\Controllers\Api\LeaderboardController@destroy | api, auth:api | true | ```{"message":"Leaderboard deleted successfully"}``` |
+
+#### Mint NFT Routes
+| Method | URI | Action | Middleware | Protected Route | Example Response                                                  |
+| --- | --- | --- | --- | --- |-------------------------------------------------------------------|
+| POST | api/mint | App\Http\Controllers\Api\MintController@store | api, auth:api | true | ```{"id":1,"user_id":1,"title":"Mint 1","description":" "string"}``` |
+
+#### NFT Prints Routes
+| Method | URI | Action | Middleware |
+| --- | --- | --- | --- |
+| GET/HEAD | api/prints | App\Http\Controllers\Api\PrintController@index | api, auth:api |
+| POST | api/prints | App\Http\Controllers\Api\PrintController@store | api, auth:api |
+| GET/HEAD | api/prints/{print} | App\Http\Controllers\Api\PrintController@show | api, auth:api |
+| PUT/PATCH | api/prints/{print} | App\Http\Controllers\Api\PrintController@update | api, auth:api |
+| DELETE | api/prints/{print} | App\Http\Controllers\Api\PrintController@destroy | api, auth:api |

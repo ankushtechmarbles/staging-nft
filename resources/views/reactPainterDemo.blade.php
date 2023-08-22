@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700&display=swap" rel="stylesheet">
     {{-- css --}}
-    <link rel="stylesheet" href="{{ asset('/painterDemo/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('/creator/index.css') }}">
 
     <script>
         window.global = window;
@@ -95,8 +95,8 @@
     <script src="painterDemo/PainterUtils/wrappedgl.js"></script>
 
     {{-- react scripts --}}
-    <script type='module' crossorigin src="{{ asset('/painterDemo/assets/index-0d430626.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('/painterDemo/assets/index-f717afc5.css') }}">
+    <script type='module' crossorigin src="{{ asset('/creator/assets/index-0d430626.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('/creator/assets/index-f717afc5.css') }}">
 </head>
 
 <body>

@@ -24,44 +24,8 @@ Route::get('cc', function () {
     dd("All cache cleared successfully.");
 });
 
-Route::get('/home-new', function () {
-    return view('home-new');
-});
-
-Route::get('/marketplace', function () {
-    return view('reactApp');
-});
-
 Route::get('/', function () {
-    return view('reactApp');
-});
-
-Route::get('/user', function () {
-    return view('reactApp');
-});
-
-Route::get('/idea', function () {
-    return view('reactApp');
-});
-
-Route::get('/create', function () {
-    return view('reactApp');
-});
-
-Route::get('/humanity', function () {
-    return view('reactApp');
-});
-
-Route::get('/auth/login', function () {
-    return view('reactApp');
-});
-
-Route::get('/auth/register', function () {
-    return view('reactApp');
-});
-
-Route::get('/profile', function () {
-    return view('reactApp');
+    return view('home-new');
 });
 
 Route::get('/painter', function() {
@@ -130,3 +94,43 @@ Route::get('/admin', function () {
     }
 });
 Route::get('/dashboard-new', [App\Http\Controllers\CourseController::class, 'newdashboard'])->name('newdashboard');
+
+
+
+
+// Old / React End points
+Route::get('/marketplace', function () {
+    return view('reactApp');
+});
+
+Route::get('/play', function () {
+    return view('reactApp');
+});
+
+Route::get('/user', function () {
+    return view('reactApp');
+});
+
+Route::get('/idea', function () {
+    return view('reactApp');
+});
+
+Route::get('/create', function () {
+    return view('reactApp');
+});
+
+Route::get('/humanity', function () {
+    return view('reactApp');
+});
+
+Route::get('/auth/login', function () {
+    return view('reactApp');
+});
+
+Route::get('/auth/register', function () {
+    return view('reactApp');
+});
+
+Route::get('/profile', function () {
+    return view('reactApp');
+});

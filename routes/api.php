@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AiGenerationController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UnityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -35,6 +37,13 @@ Route::post('/nfts/textToImage', [MintedNftsController::class, 'generateTextToIm
 Route::post('/nfts/share/discord', [MintedNftsController::class, 'discordShare']);
 
 Route::post('/project/create', [ProjectController::class, 'create']);
+// Unity routes
+Route::get('/unity', [UnityController::class, 'index']);
+Route::post('/unity', [UnityController::class, 'store']);
+Route::post('/unity/auth', [UnityController::class, 'login']);
+
+// AI Generation Routes
+Route::post('/ai/create/tshirt', [AiGenerationController::class, 'generateTshirtTexture']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // Minted nfts routes
@@ -46,10 +55,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Post VOTE for project
     Route::post('/project/vote/{id}', [ProjectScoreController::class, 'vote']);
-
-    // TODO: Update and delete for drafts
-    // Route::put('/nfts/{id}', [MintedNftsController::class, 'update']);
-    // Route::delete('/nfts/{id}', [MintedNftsController::class, 'destroy']);
 
     // Auth routes
     Route::post("/paper/connect", [AuthController::class, 'connectPaperWallet']);

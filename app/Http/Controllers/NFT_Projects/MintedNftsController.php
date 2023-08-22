@@ -14,6 +14,7 @@ use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use File;
+use function PHPUnit\Framework\throwException;
 
 class MintedNftsController extends Controller
 {
@@ -38,7 +39,7 @@ class MintedNftsController extends Controller
 
             $apiKey = env('STABILITY_API_KEY');
             if (!$apiKey) {
-                throw ("Missing Stability API key.");
+                throwException("Missing Stability API key.");
             }
 
             $client = new \GuzzleHttp\Client();
@@ -86,59 +87,23 @@ class MintedNftsController extends Controller
             $fields = $request->validate([
                 'name' => 'string|required',
                 'description' => 'string|required',
-                'image' => 'string|required',
+                'htmlCID' => 'string|required',
+                'imageCID' => 'string|required',
             ]);
 
-            // add to infura
+            $userID = auth()->user()->id;
 
-            // imag added
-            $infuraClientImg = new \GuzzleHttp\Client();
-            $imageResult = $infuraClientImg->request('POST', "https://ipfs.infura.io:5001/api/v0/add?pin=true", [
-                'headers' => ["Authorization" => 'Basic ' . base64_encode("295IyYFw5qunvh9hHjznVbrdexu:6e36bc3023b62c754be16c9a17c9af1e")],
-                'multipart' => [
-                    [
-                        'name'     => 'file',
-                        'contents' => file_get_contents($request->file('image')->path()),
-                    ],
-                ]
+            // create new NFT
+            $draft = NftDrafts::create([
+                'image_cid' => $fields['imageCID'],
+                'html_cid' => $fields['htmlCID'],
+                'user_id' => $userID,
+                'name' => $fields['name'],
+                'description' => $fields['description'],
             ]);
-
-            $imageHash = json_decode($imageResult->getBody(), true)['Hash'];
-
-
-            $process = new Process(
-                [
-                    'node',
-                    'createHtmlFile.js',
-                    $imageHash
-                ]
-            );
-
-            $process->run();
-
-            if (!$process->isSuccessful()) {
-                throw new ProcessFailedException(($process));
-            }
-
-            $output = $process->getOutput();
-
-            $data = json_decode($output);
-
-            echo ($data);
-
-            // $userID = auth()->user()->id;
-
-            // // create new NFT
-            // $draft = NftDrafts::create([
-            //     'image_cid' => $imageHash,
-            //     'html_cid' => $htmlHash,
-            //     'user_id' => $userID,
-            //     'name' => $fields['name'],
-            //     'description' => $fields['description'],
-            // ]);
 
             return response()->json([
-                'draft' => $data
+                'draft' => $draft
             ]);
         } catch (\Throwable $th) {
             return response()->json([
@@ -165,7 +130,7 @@ class MintedNftsController extends Controller
                 "attachments" =>  curl_file_create($file, "image/png", "image.png")
             ];
 
-            $curl = curl_init("https://discord.com/api/webhooks/1055613746577424535/wvq2xIJA8goA53ilTYFLV_mXLBb62FhpTyWGi-1BKzYYXbpVXreUbjhV0AghXOJIA47C");
+            $curl = curl_init("");
             curl_setopt($curl, CURLOPT_TIMEOUT, 5); // 5 seconds
             curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5); // 5 seconds
             curl_setopt($curl, CURLOPT_POST, 1);
@@ -256,7 +221,7 @@ class MintedNftsController extends Controller
             $response = $client->request('POST', 'https://paper.xyz/api/2022-08-12/checkout-sdk-intent', [
                 'body' => $body,
                 'headers' => [
-                    'Authorization' => "Bearer 8d0eb4e6-5629-45cb-9370-7fab67f0f911",
+                    'Authorization' => "",
                     'accept' => 'application/json',
                     'content-type' => 'application/json',
                 ],
@@ -373,6 +338,35 @@ class MintedNftsController extends Controller
             'message' => 'User updated whitelisted',
             'user' => $userInfo,
         ], 200);
+    }
+
+    public function createCheckoutIntent()
+    {
+        $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('POST', 'https://withpaper.com/api/2022-08-12/checkout-link-intent', [
+            'body' => json_encode(
+                [
+                    "contractId" => "6959fd8d-0792-46af-9d8c-b4c2c070d3f8",
+                    "title" => "My First PaperCheckout",
+                    "contractArgs" => [
+                        'collectionContractAddress' => '0x720F6aE0e450e97052Af515B44247a6e6542B9F6',
+                        'tokenId' => '0'
+                    ]
+                ]
+            ),
+            'headers' => [
+                'Authorization' => 'Bearer c068b34d-cc3e-42fa-8740-90735330cac7',
+                'accept' => 'application/json',
+                'content-type' => 'application/json',
+            ],
+        ]);
+
+        $body = $response->getBody();
+
+        return response()->json([
+            'paper' => json_decode($body, true),
+        ]);
     }
 
     /**
