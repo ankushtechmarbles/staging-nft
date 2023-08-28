@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Livewire\CourseStudyController;
@@ -24,9 +25,7 @@ Route::get('cc', function () {
     dd("All cache cleared successfully.");
 });
 
-Route::get('/', function () {
-    return view('home-new');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/painter', function() {
    return view ('reactPainterDemo');
@@ -78,8 +77,6 @@ Route::get('/terms', function () {
 Auth::routes(['register' => false]);
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'dashboard'])->name('dashboard');
 

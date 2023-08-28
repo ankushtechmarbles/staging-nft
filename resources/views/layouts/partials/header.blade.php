@@ -36,7 +36,7 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Play</a>
+                        <a class="nav-link" href="{{ url('/play') }}">Play</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about') }}">About</a>

@@ -71,4 +71,5 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return (empty($value)) ? '' : asset('uploads/' . $value);
     }
+
 }

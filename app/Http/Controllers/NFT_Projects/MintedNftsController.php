@@ -22,7 +22,7 @@ class MintedNftsController extends Controller
     /**
      * Generate a list of images from user input from dream API
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function generateTextToImage(Request $request)
     {
@@ -79,7 +79,7 @@ class MintedNftsController extends Controller
     /**
      * Display a listing of all mintedNfts by project ID.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function saveDraft(Request $request)
     {

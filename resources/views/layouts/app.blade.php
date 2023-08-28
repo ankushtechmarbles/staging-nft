@@ -55,6 +55,7 @@
     <script>
       let mode = window.localStorage.getItem('mode'),
           root = document.getElementsByTagName('html')[0];
+      window.process = { browser: true, env: { ENVIRONMENT: 'BROWSER' } };
       if (mode !== null && mode === 'dark') {
         root.classList.add('dark-mode');
       } else {
@@ -84,12 +85,18 @@
     </a>
 
 
+    <script src="{{ mix('js/app.js') }}"></script>
     @livewireScripts
 
     <!-- Vendor Scripts -->
     <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}"></script>
     <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+
+    <script type="module">
+        import ethers from 'https://cdn.jsdelivr.net/npm/ethers@5.7.2/+esm'
+    </script>
     @stack('js-plugin')
 
     <!-- Main Theme Script -->

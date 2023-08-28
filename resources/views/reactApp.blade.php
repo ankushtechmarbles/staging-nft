@@ -95,8 +95,8 @@
     <script src="creator/PainterUtils/wrappedgl.js"></script>
 
     {{-- react scripts --}}
-    <script type='module' crossorigin src="{{ asset('/creator/assets/index.9ff6f256.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('/creator/assets/index.51d6d9a6.css') }}">
+    <script type='module' crossorigin src="{{ asset('/creator/assets/index-4dc78f2a.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('/creator/assets/index-28108144.css') }}">
 </head>
 
 <body>

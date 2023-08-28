@@ -2,7 +2,7 @@
 @section('title','About')
 @section('body-class','about-page')
 @section('header-bg-class','bg-navbar')
-@push('custom-css') 
+@push('custom-css')
 <link rel="stylesheet" media="screen" href="{{asset('assets/css/about.css')}}">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
@@ -161,14 +161,13 @@
 <!-- /. How to create end -->
 
 <!-- Leaderboard section -->
-
 <section id="leader-board" class="section leader-board pb-1">
 	<div class="container inner-element content">
 		<h2 class="h-tagline text-center text-dark mb-1 fst-italic">Leaderboard</h2>
 		<p class="sub-heading-leader text-center text-dark pb-5">Discover the top creators and NFTs on our platform, showcasing an incredible array of talent and innovation. Be inspired by the best in the industry and join our thriving community of artists, collectors, and enthusiasts.</p>
 		<div class="px-5 table-overflow-scroll position-relative utility">
 			<div class="table-container bg-white">
-				<table width="100%">
+				<table>
 					<tbody>
 						<tr>
 							<td><img class="user-prev" src="image/img_01.png"></td>
@@ -349,7 +348,7 @@
 									  </ul>
 									</div>
 							</div>
-							
+
 						</div>
 						<div class="col-7 px-0">
 							<div class="d-flex gap-3 justify-content-end">
@@ -854,7 +853,7 @@
 					    </div>
 					  </div>
 						</div>
-						
+
 					  <div class="lode-more-button text-center">
 					  	<button type="button" id="load_more" class="btn btn_green text-dark">Lode More</button>
 					  </div>
@@ -876,7 +875,7 @@
 
 			<script>
   // Your jQuery-related code here
-				$(document).ready(function($) {
+  $(document).ready(function($) {
 					$('.slider-for').slick({
 						slidesToShow: 1,
 						slidesToScroll: 1,
@@ -934,7 +933,7 @@
 			    });
 
 			  });
-			
+
 			</script>
 
 			@endsection

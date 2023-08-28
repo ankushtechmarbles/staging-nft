@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('owner_id');
             $table->string('claimer_id');
-            $table->string('draft_id');
             $table->string('project_id');
             $table->string('nft_id');
             $table->timestamps();

@@ -1,11 +1,12 @@
 <?php
 
-use App\Models\User;
+use App\Models\Competition;
+use App\Models\Project;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNftDraftsTable extends Migration
+class CreateCompetitionEntryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +15,10 @@ class CreateNftDraftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nft_drafts', function (Blueprint $table) {
+        Schema::create('competition_entry', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('image_cid');
-            $table->string('html_cid');
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Project::class);
+            $table->foreignIdFor(Competition::class);
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateNftDraftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nft_drafts');
+        Schema::dropIfExists('competition_entry');
     }
 }

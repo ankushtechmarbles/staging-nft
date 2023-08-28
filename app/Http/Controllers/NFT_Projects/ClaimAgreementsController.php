@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClaimAgreements;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ClaimAgreementsController extends Controller
@@ -25,10 +26,10 @@ class ClaimAgreementsController extends Controller
         ]);
 
         // find a Draft in the database by id
-        $draft = Drafts::find($fields['draft_id']);
+        $draft = Project::find($fields['draft_id']);
 
         // check if draft is claimed already
-        if($draft->claimed) {
+        if($draft->claim_agreement_id != null) {
             return response([
                 'message' => 'Draft already claimed'
             ], 400);
@@ -40,6 +41,11 @@ class ClaimAgreementsController extends Controller
             'owner_id' => $draft->user_id,
             'claimer_id' => $fields['user_id'],
         ]);
+
+        // re-assign draft to claimer and update claim agreement with claimAgreement id
+        $draft->user_id = $fields['user_id'];
+        $draft->claim_agreement_id = $claimAgreement->id;
+        $draft->save();
 
         // return new claim agreement & draft
         return response([

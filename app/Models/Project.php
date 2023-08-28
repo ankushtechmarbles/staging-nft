@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\MintedNfts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MintedNfts;
 use App\Models\SupportedBlockchains;
 use App\Models\ProjectScore;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Project extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     public function blockchains()
     {
@@ -52,8 +54,21 @@ class Project extends Model
         'types',
         'track',
         'slug',
-        'cover_image'
+        'cover_image',
+        'utilities',
+        'members',
+        'animation_url',
+        'image_url',
+        'blockchain',
+        'is_public',
+        'is_minted',
+        'project_id',
+        'user_id',
     ];
+
+    protected $dates = ['deleted_at', 'published_at'];
+
+    protected $date = ['published_at', 'created_at', 'updated_at'];
 
     /**
      * Get the path to the poster image
@@ -73,5 +88,22 @@ class Project extends Model
     public function projectTracks()
     {
         return $this->belongsTo(ProjectTrack::class, 'track', 'id');
+    }
+
+    protected $softDelete = true;
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function claimAgreements()
+    {
+        return $this->hasOne(ClaimAgreements::class, 'draft_id');
     }
 }
