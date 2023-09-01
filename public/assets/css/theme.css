@@ -103,7 +103,7 @@
 
   --blue: #00AAFF;
   --green: #00E599;
-  --black: #000000;  
+  --black: #000000;
   --blue-jeans: #55acee;
   --chateau-green: #3bbc66;
   --dove-gray: #707070;
@@ -112,7 +112,7 @@
   --onyx: #373737;
   --saffron: #f3ba2f;
   --white: #ffffff;
-  --wild-strawberry: #ef3291; 
+  --wild-strawberry: #ef3291;
   --eerie-black: #1A1A1A;
   --turquoise-pearl: #3cc8c8;
   --mountain-mist: #999999;
@@ -139,7 +139,7 @@
   --font-size-24: 24px;
   --font-size-32: 32px;
   --font-size-40: 40px;
- 
+
 }
 
 *,
@@ -417,10 +417,10 @@ svg {
 }
 svg:not(:root) {
   overflow: hidden;
-} 
+}
 .social-icon {
   width: 1.5625rem;
-  height: 1.5625rem;   
+  height: 1.5625rem;
 }
 svg.social-icon{
   stroke: var(--black);
@@ -733,14 +733,14 @@ progress {
 
 .icon-width {
   width: 1.5625rem;
-  height: 1.5625rem;   
+  height: 1.5625rem;
 }
 
 svg.icon-width{
   stroke: var(--black);
   fill: var(--black);
 }
-.dark-mode svg.icon-width{ 
+.dark-mode svg.icon-width{
   stroke: var(--white);
   fill: var(--white);
 }
@@ -2873,7 +2873,7 @@ textarea.form-control-lg {
   --si-btn-border-width: 1px;
   --si-btn-border-color: transparent;
   --si-btn-border-radius: 41px;
-  --si-btn-hover-border-color: transparent; 
+  --si-btn-hover-border-color: transparent;
   --si-btn-disabled-opacity: 0.65;
   --si-btn-focus-box-shadow: 3px 3px 0px 0px #1A1A1A;
   --si-btn-box-shadow: 3px 3px 0px 0px #1A1A1A;
@@ -2900,7 +2900,7 @@ textarea.form-control-lg {
   box-shadow: var(--si-btn-box-shadow);
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
- 
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
@@ -3046,7 +3046,7 @@ textarea.form-control-lg {
   --si-btn-hover-box-shadow: unset;
   --si-btn-padding-x: 37px;
   --si-btn-padding-y: 13px;
-}  
+}
 
 .btn-danger {
   --si-btn-color: #000;
@@ -4438,8 +4438,8 @@ textarea.form-control-lg {
 
 .card-img,
 .card-img-top {
-  border-top-left-radius: var(--si-card-inner-border-radius);
-  border-top-right-radius: var(--si-card-inner-border-radius);
+  border-top-left-radius: 24px;
+  border-top-right-radius:  24px;
 }
 
 .card-img,
@@ -6733,7 +6733,7 @@ textarea.form-control-lg {
   display: none !important;
 }
 
-.shadow { 
+.shadow {
   box-shadow: 3px 3px 0px #1A1A1A !important;
 }
 
@@ -6862,8 +6862,8 @@ textarea.form-control-lg {
   border: var(--si-border-width) var(--si-border-style) var(--si-border-color) !important;
 }
 
-.border-2 { 
-  border: 2px solid var(--si-border-color) !important; 
+.border-2 {
+  border: 2px solid var(--si-border-color) !important;
 }
 
 .border-0 {
@@ -8070,7 +8070,7 @@ textarea.form-control-lg {
   background-color: var(--lily-white) !important;
 }
 
-.bg-strawberry{ 
+.bg-strawberry{
   background-color: var(--wild-strawberry) !important;
 }
 
@@ -12197,7 +12197,7 @@ label {
   background-position: left bottom;
 }
 .form-switch.mode-switch .form-check-input{
-  height: 2rem; 
+  height: 2rem;
   width: 1rem;
   background-position: left bottom;
 }
@@ -12659,7 +12659,7 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
 .btn-icon-outline:hover {
   --si-btn-border-color: rgba(0, 0, 0);
   --si-btn-hover-border-color: rgba(0, 0, 0);
-  --si-btn-disabled-border-color: rgba(0, 0, 0, 0.35); 
+  --si-btn-disabled-border-color: rgba(0, 0, 0, 0.35);
   --si-btn-box-shadow: unset;
   --si-btn-hover-box-shadow: unset;
   --si-btn-size: 2.75rem;
@@ -15859,13 +15859,13 @@ img-comparison-slider:focus {
   --si-heading-link-hover-color: #F3BA2F;
   --si-nav-link-color: rgba(255, 255, 255, 0.85);
   --si-border-color: rgba(255, 255, 255, 0.14);
-  --si-code-color: #f33185;  
+  --si-code-color: #f33185;
   --course-page: #1E1E1E;
 
 
   --blue: #00AAFF;
-  --green: #00E599; 
-  --black: #ffffff;  
+  --green: #00E599;
+  --black: #ffffff;
   --blue-jeans: #55acee;
   --chateau-green: #3bbc66;
   --dove-gray: #fff;
@@ -15874,7 +15874,7 @@ img-comparison-slider:focus {
   --onyx: #373737;
   --saffron: #f3ba2f;
   --white: #fff;
-  --wild-strawberry: #ef3291; 
+  --wild-strawberry: #ef3291;
   --eerie-black: #1A1A1A;
   --eastern-blue-2: #1F1F1F;
   --turquoise-pearl: #3cc8c8;
@@ -16118,7 +16118,7 @@ img-comparison-slider:focus {
   color: #fff;
 }
 .dark-mode .form-switch.mode-switch .form-check-input, .dark-mode .form-switch.price-switch .form-check-input {
-  background-color: #fff;  
+  background-color: #fff;
   border: 1px solid #fff;
 }
 .dark-mode .form-switch.mode-switch .form-check-input:checked ~ .form-check-label:first-of-type, .dark-mode .form-switch.price-switch .form-check-input:checked ~ .form-check-label:first-of-type {

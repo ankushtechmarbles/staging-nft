@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\MintedNfts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\SupportedBlockchains;
@@ -20,14 +19,14 @@ class Project extends Model
         return $this->hasOne(SupportedBlockchains::class);
     }
 
-    public function mintedNfts()
-    {
-        return $this->hasMany(mintedNfts::class);
-    }
-
     public function projectScores()
     {
         return $this->hasMany(ProjectScore::class);
+    }
+
+    public function projectFeedbacks()
+    {
+        return $this->hasMany(ProjectFeedBack::class);
     }
 
     protected $table = "projects";
@@ -90,8 +89,6 @@ class Project extends Model
         return $this->belongsTo(ProjectTrack::class, 'track', 'id');
     }
 
-    protected $softDelete = true;
-
     public function project()
     {
         return $this->belongsTo(Project::class, 'project_id');
@@ -106,4 +103,6 @@ class Project extends Model
     {
         return $this->hasOne(ClaimAgreements::class, 'draft_id');
     }
+
+    protected $softDelete = true;
 }

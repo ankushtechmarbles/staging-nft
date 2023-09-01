@@ -216,7 +216,7 @@ class ProjectController extends Controller
     {
         $projectScore = ProjectScore::where('project_id', $project->id)->first();
 
-        if($project->is_draft) {
+        if($project->is_draft && !$project->is_public) {
             if(!auth()->user() || auth()->user()->id != $project->user_id) {
                 return response([
                     'message' => 'Unauthorized'

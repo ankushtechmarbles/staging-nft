@@ -9,10 +9,10 @@ use App\Models\Course;
 
 class CourseController extends Controller
 {
-        
+
     public function index(Request $request)
     {
-        
+
         /*$course_categories = CourseCategory::orderBy('course_category_name')->where('course_category_is_active', 1)->pluck('course_category_name', 'id')->prepend('All Categories', '');
 
         $course_levels = CourseLevel::orderBy('course_level_name', 'asc')->where('course_level_is_active', 1)->pluck('course_level_name', 'id')->prepend('All Level', '');
@@ -20,7 +20,7 @@ class CourseController extends Controller
         $courses = Course::whereNull('deleted_at')->orderBy('course_title')->get();
 
 
-        return view('course.index',[ 
+        return view('course.index',[
             'course_categories' => $course_categories,
             'course_levels' => $course_levels,
             'courses' => $courses,
@@ -31,13 +31,9 @@ class CourseController extends Controller
     public function show($course_slug)
     {
         $course = Course::with(['lessons'])->whereNull('deleted_at')->where('course_slug', $course_slug)->firstOrFail();
-        
+
         return view('course.show',[
             'course' => $course,
         ]);
-    }
-    public function newdashboard(){
-
-        return view('dashboard.dashboard-new');
     }
 }

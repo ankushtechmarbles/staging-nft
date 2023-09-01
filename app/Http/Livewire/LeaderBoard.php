@@ -15,7 +15,7 @@ class LeaderBoard extends Component
     use WithPagination;
 
     public $categories = [];
-    public $sortColumn = 'id';
+    public $sortColumn = 'projects.id';
     public $sortDirection = 'desc';
     public $searchColumns = [
         'title' => '',
@@ -55,7 +55,7 @@ class LeaderBoard extends Component
             'project_type_name',
             'discord',
             'twitter',
-            'slug', 
+            'slug',
             'supported_blockchains.ethereum',
             'supported_blockchains.polygon',
             'supported_blockchains.avalanche',
@@ -64,7 +64,7 @@ class LeaderBoard extends Component
             'supported_blockchains.optimism',
         ])->Join('supported_blockchains','supported_blockchains.id', '=', 'projects.supported_blockchains_id')
         ->leftJoin('project_tracks','project_tracks.id', '=', 'projects.track')
-        ->leftJoin('project_types','project_types.id', '=', 'projects.types'); 
+        ->leftJoin('project_types','project_types.id', '=', 'projects.types');
 
         foreach ($this->searchColumns as $column => $value) {
             if (!empty($value)) {

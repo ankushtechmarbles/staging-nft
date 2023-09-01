@@ -44,6 +44,8 @@ class ProjectFactory extends Factory
             'is_minted' => $this->faker->boolean(),
             'is_draft' => $this->faker->boolean(),
             'utilities' => $this->faker->paragraph(),
+            "project_track_id" => $this->faker->numberBetween(1, 5),
+            "project_type_id" => $this->faker->numberBetween(1, 5),
             'user_id' => User::all()->random()->id,
         ];
     }

@@ -43,6 +43,7 @@ class CreateProjectsTable extends Migration
             $table->foreignIdFor(ClaimAgreements::class)->nullable();
             $table->foreignIdFor(User::class);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

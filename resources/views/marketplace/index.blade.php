@@ -1,0 +1,10 @@
+@extends('layouts.app')
+@section('title','Marketplace')
+@section('body-class','marketplace')
+@section('header-bg-class','bg-navbar')
+@push('custom-css')
+@endpush
+@section('content')
+@endsection
+@push('js-plugin')@endpush
+@push('custom-scripts')@endpush

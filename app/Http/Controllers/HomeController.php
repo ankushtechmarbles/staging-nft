@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
+use App\Models\ProjectTrack;
+use App\Models\ProjectType;
 use App\Traits\LeaderboardTrait;
 use Illuminate\Http\Request;
 
@@ -26,8 +29,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $leaderboard = $this->getActiveLeaderboard();
-
-        return view('home-new', ['leaderboard' => $leaderboard]);
+        return view('home-new', [
+            'projects' => $this->getTopTen(),
+        ]);
     }
 }

@@ -45,6 +45,12 @@
     <!-- Vendor Styles -->
     <link rel="stylesheet" media="screen" href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}"/>
     <link rel="stylesheet" media="screen" href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" media="screen" href="{{ asset('assets/css/leaderboard.css') }}">
+      <link rel="stylesheet" media="screen" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" media="screen" href="{{ asset('css/app.css') }}">
     @stack('vendor-css')
 
     <!-- Main Theme Styles + Bootstrap -->
@@ -85,23 +91,14 @@
     </a>
 
 
-    <script src="{{ mix('js/app.js') }}"></script>
     @livewireScripts
-
     <!-- Vendor Scripts -->
-    <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}"></script>
     <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-
-
-    <script type="module">
-        import ethers from 'https://cdn.jsdelivr.net/npm/ethers@5.7.2/+esm'
-    </script>
     @stack('js-plugin')
-
     <!-- Main Theme Script -->
     <script src="{{asset('assets/js/theme.min.js')}}"></script>
-
+    <script src="{{ mix('js/app.js') }}"></script>
     @stack('custom-scripts')
   </body>
 </html>

@@ -26,7 +26,7 @@ class LoadMoreProjects extends Component
     public function render()
     {
         if ($this->loadMore) {
-            $projects = Project::paginate($this->perPage, ['*'], null, $this->page);
+            $projects = Project::where('is_public', true)->paginate($this->perPage, ['*'], null, $this->page);
 
             return view('livewire.show-projects', [
                 'projects' => $projects

@@ -199,7 +199,7 @@ span.text-bg-warning{
 	opacity: 1;
 	outline: 10px solid #029E57;
 	animation: beacon 1.5s infinite linear;
-    animation-fill-mode: forwards;	
+    animation-fill-mode: forwards;
 }
 
 .show-active-filter-wrapper{
@@ -559,7 +559,7 @@ Keyframe for love indicator
     -webkit-transform: scale(.1);
     opacity:1;
   }
-  
+
   100% {
     -webkit-transform: scale(1);
     opacity:1;

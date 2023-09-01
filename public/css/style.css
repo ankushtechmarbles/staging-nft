@@ -433,7 +433,6 @@ svg.social-icon{
 .product_about .col .card{
 	background: #FFFFFF;
     border: 1px solid #000000;
-    box-shadow: 3px 3px 0px #1A1A1A;
     border-radius: 16px;
     padding: 8px;
 }
@@ -443,17 +442,18 @@ svg.social-icon{
 .product_about .col .card .card-title{
 	margin: 8px 0 16px;
 	padding: 0;
-	font-size: 16px;
+	font-size: 1.25em;
 	color: #373737;
 	font-weight: 500;
 	line-height: 19px;
     font-style: normal;
 	font-family: 'Raleway', sans-serif;
+    text-transform: capitalize;
 }
-.product_about .col .card .card-text{
+.product_about .col .card .card-text {
+    color: black;
 	margin: 0;
 	font-size: 12px;
-	color: #707070;
 	line-height: 14px;
 	font-weight: 400;
 	font-style: normal;
@@ -462,10 +462,9 @@ svg.social-icon{
 .product_about .col .card .card-body .social_like{
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	border-top: 1px solid #707070;
+	justify-content: start;
 	padding: 20px 0 0;
-	margin: 25px 0 0;
+    gap: 0.5rem
 }
 .product_about .col .card .card-body .social_like span{
 	display: block;
@@ -1105,15 +1104,28 @@ width: 12rem;
 }
 
 .btn_vote {
-background: transparent;
-border-radius: 24px;
-border: 1px solid #E3E3E3;
+    border-radius: 24px;
+    border: 1px solid black;
+    font-size: 12px;
+    font-weight: 400;
+    text-align:center;
+    background-color: var(--chateau-green);
+    pointer-events: all;
+    color: transparent !important;
+    text-shadow: 0 0 0 black;
+}
 
-font-size: 12px;
-font-weight: 400;
-text-align:center;
+div.social_like > div#eth-pill.btn_vote{
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
+}
 
-pointer-events: all;
+div.btn_vote > span {
+    display: inline;
 }
 
 .btn_vote:hover {

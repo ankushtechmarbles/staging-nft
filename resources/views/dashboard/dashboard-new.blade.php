@@ -263,222 +263,54 @@
 						<div class="col-md-9 content-element">
 							<div class="row g-3">
 								<div class="col-md-3">
-									<div class="card nft-card">
-										<a class="edit-nft btn-yellow" href="javaScript:void"><i class="fa-solid fa-pen"></i></a>
-										<img src="image/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
-										<div class="card-body">
-											<h5 class="card-title">Illusion, Perception</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.</p>
-											<div class="d-flex justify-content-between">
-												<div class="card-badge">
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-solid fa-medal"></i>
-														<svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
-															<path d="M5.84677 2.96739C5.78953 2.91177 5.70921 2.88649 5.63062 2.89941C5.55188 2.91229 5.48388 2.96172 5.44736 3.03266C5.32174 3.2767 5.16217 3.50097 4.97444 3.69922C4.99316 3.55601 5.00258 3.41194 5.00258 3.26749C5.00258 2.99031 4.96543 2.70507 4.89213 2.4196C4.65112 1.48195 4.01915 0.688984 3.15831 0.244052C3.08336 0.205328 2.99406 0.206687 2.92032 0.247677C2.84658 0.288684 2.79829 0.363866 2.79168 0.447962C2.72457 1.30006 2.28566 2.07528 1.58683 2.57535C1.57758 2.58202 1.5684 2.58876 1.55922 2.59548C1.5402 2.60939 1.52228 2.62255 1.50552 2.6336C1.50291 2.63534 1.5003 2.63712 1.49775 2.63895C1.05824 2.95363 0.695591 3.3731 0.448962 3.85214C0.198355 4.33941 0.0712891 4.86229 0.0712891 5.40622C0.0712891 5.68332 0.108435 5.96855 0.181704 6.25407C0.568357 7.75901 1.92268 8.81008 3.47517 8.81008C5.35197 8.81008 6.87884 7.28311 6.87884 5.40622C6.87884 4.48067 6.51231 3.61454 5.84677 2.96739Z" fill="black"/>
-														</svg>
-														<span class="badge-count m-0">3.1K</span>
-													</span>
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-brands fa-ethereum"></i>
-														<span class="badge-count m-0">4.1K</span>
-													</span>
-												</div>
-												<div class="card-show-eye">
-													<div class="form-check form-switch d-flex align-items-center">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
-										</div>
-									</div>
+                                    <x-cards.nft-card
+                                        :owner="true"
+                                        :title="'Illusion, Perception'"
+                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
+                                    />
 								</div>
 								<div class="col-md-3">
-									<div class="card nft-card">
-										<a class="edit-nft btn-yellow" href="javaScript:void"><i class="fa-solid fa-pen"></i></a>
-										<img src="image/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
-										<div class="card-body">
-											<h5 class="card-title">Illusion, Perception</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.</p>
-											<div class="d-flex justify-content-between">
-												<div class="card-badge">
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-solid fa-medal"></i>
-														<svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
-															<path d="M5.84677 2.96739C5.78953 2.91177 5.70921 2.88649 5.63062 2.89941C5.55188 2.91229 5.48388 2.96172 5.44736 3.03266C5.32174 3.2767 5.16217 3.50097 4.97444 3.69922C4.99316 3.55601 5.00258 3.41194 5.00258 3.26749C5.00258 2.99031 4.96543 2.70507 4.89213 2.4196C4.65112 1.48195 4.01915 0.688984 3.15831 0.244052C3.08336 0.205328 2.99406 0.206687 2.92032 0.247677C2.84658 0.288684 2.79829 0.363866 2.79168 0.447962C2.72457 1.30006 2.28566 2.07528 1.58683 2.57535C1.57758 2.58202 1.5684 2.58876 1.55922 2.59548C1.5402 2.60939 1.52228 2.62255 1.50552 2.6336C1.50291 2.63534 1.5003 2.63712 1.49775 2.63895C1.05824 2.95363 0.695591 3.3731 0.448962 3.85214C0.198355 4.33941 0.0712891 4.86229 0.0712891 5.40622C0.0712891 5.68332 0.108435 5.96855 0.181704 6.25407C0.568357 7.75901 1.92268 8.81008 3.47517 8.81008C5.35197 8.81008 6.87884 7.28311 6.87884 5.40622C6.87884 4.48067 6.51231 3.61454 5.84677 2.96739Z" fill="black"/>
-														</svg>
-														<span class="badge-count m-0">3.1K</span>
-													</span>
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-brands fa-ethereum"></i>
-														<span class="badge-count m-0">4.1K</span>
-													</span>
-												</div>
-												<div class="card-show-eye">
-													<div class="form-check form-switch d-flex align-items-center">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
-										</div>
-									</div>
-								</div>
+                                  <x-cards.nft-card
+                                      :owner="true"
+                                      :title="'Illusion, Perception'"
+                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
+                                    />
+                                </div>
 								<div class="col-md-3">
-									<div class="card nft-card">
-										<a class="edit-nft btn-yellow" href="javaScript:void"><i class="fa-solid fa-pen"></i></a>
-										<img src="image/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
-										<div class="card-body">
-											<h5 class="card-title">Illusion, Perception</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.</p>
-											<div class="d-flex justify-content-between">
-												<div class="card-badge">
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-solid fa-medal"></i>
-														<svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
-															<path d="M5.84677 2.96739C5.78953 2.91177 5.70921 2.88649 5.63062 2.89941C5.55188 2.91229 5.48388 2.96172 5.44736 3.03266C5.32174 3.2767 5.16217 3.50097 4.97444 3.69922C4.99316 3.55601 5.00258 3.41194 5.00258 3.26749C5.00258 2.99031 4.96543 2.70507 4.89213 2.4196C4.65112 1.48195 4.01915 0.688984 3.15831 0.244052C3.08336 0.205328 2.99406 0.206687 2.92032 0.247677C2.84658 0.288684 2.79829 0.363866 2.79168 0.447962C2.72457 1.30006 2.28566 2.07528 1.58683 2.57535C1.57758 2.58202 1.5684 2.58876 1.55922 2.59548C1.5402 2.60939 1.52228 2.62255 1.50552 2.6336C1.50291 2.63534 1.5003 2.63712 1.49775 2.63895C1.05824 2.95363 0.695591 3.3731 0.448962 3.85214C0.198355 4.33941 0.0712891 4.86229 0.0712891 5.40622C0.0712891 5.68332 0.108435 5.96855 0.181704 6.25407C0.568357 7.75901 1.92268 8.81008 3.47517 8.81008C5.35197 8.81008 6.87884 7.28311 6.87884 5.40622C6.87884 4.48067 6.51231 3.61454 5.84677 2.96739Z" fill="black"/>
-														</svg>
-														<span class="badge-count m-0">3.1K</span>
-													</span>
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-brands fa-ethereum"></i>
-														<span class="badge-count m-0">4.1K</span>
-													</span>
-												</div>
-												<div class="card-show-eye">
-													<div class="form-check form-switch d-flex align-items-center">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="card nft-card">
-										<a class="edit-nft btn-yellow" href="javaScript:void"><i class="fa-solid fa-pen"></i></a>
-										<img src="image/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
-										<div class="card-body">
-											<h5 class="card-title">Illusion, Perception</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.</p>
-											<div class="d-flex justify-content-between">
-												<div class="card-badge">
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-solid fa-medal"></i>
-														<svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
-															<path d="M5.84677 2.96739C5.78953 2.91177 5.70921 2.88649 5.63062 2.89941C5.55188 2.91229 5.48388 2.96172 5.44736 3.03266C5.32174 3.2767 5.16217 3.50097 4.97444 3.69922C4.99316 3.55601 5.00258 3.41194 5.00258 3.26749C5.00258 2.99031 4.96543 2.70507 4.89213 2.4196C4.65112 1.48195 4.01915 0.688984 3.15831 0.244052C3.08336 0.205328 2.99406 0.206687 2.92032 0.247677C2.84658 0.288684 2.79829 0.363866 2.79168 0.447962C2.72457 1.30006 2.28566 2.07528 1.58683 2.57535C1.57758 2.58202 1.5684 2.58876 1.55922 2.59548C1.5402 2.60939 1.52228 2.62255 1.50552 2.6336C1.50291 2.63534 1.5003 2.63712 1.49775 2.63895C1.05824 2.95363 0.695591 3.3731 0.448962 3.85214C0.198355 4.33941 0.0712891 4.86229 0.0712891 5.40622C0.0712891 5.68332 0.108435 5.96855 0.181704 6.25407C0.568357 7.75901 1.92268 8.81008 3.47517 8.81008C5.35197 8.81008 6.87884 7.28311 6.87884 5.40622C6.87884 4.48067 6.51231 3.61454 5.84677 2.96739Z" fill="black"/>
-														</svg>
-														<span class="badge-count m-0">3.1K</span>
-													</span>
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-brands fa-ethereum"></i>
-														<span class="badge-count m-0">4.1K</span>
-													</span>
-												</div>
-												<div class="card-show-eye">
-													<div class="form-check form-switch d-flex align-items-center">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="card nft-card">
-										<a class="edit-nft btn-yellow" href="javaScript:void"><i class="fa-solid fa-pen"></i></a>
-										<img src="image/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
-										<div class="card-body">
-											<h5 class="card-title">Illusion, Perception</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.</p>
-											<div class="d-flex justify-content-between">
-												<div class="card-badge">
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-solid fa-medal"></i>
-														<svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
-															<path d="M5.84677 2.96739C5.78953 2.91177 5.70921 2.88649 5.63062 2.89941C5.55188 2.91229 5.48388 2.96172 5.44736 3.03266C5.32174 3.2767 5.16217 3.50097 4.97444 3.69922C4.99316 3.55601 5.00258 3.41194 5.00258 3.26749C5.00258 2.99031 4.96543 2.70507 4.89213 2.4196C4.65112 1.48195 4.01915 0.688984 3.15831 0.244052C3.08336 0.205328 2.99406 0.206687 2.92032 0.247677C2.84658 0.288684 2.79829 0.363866 2.79168 0.447962C2.72457 1.30006 2.28566 2.07528 1.58683 2.57535C1.57758 2.58202 1.5684 2.58876 1.55922 2.59548C1.5402 2.60939 1.52228 2.62255 1.50552 2.6336C1.50291 2.63534 1.5003 2.63712 1.49775 2.63895C1.05824 2.95363 0.695591 3.3731 0.448962 3.85214C0.198355 4.33941 0.0712891 4.86229 0.0712891 5.40622C0.0712891 5.68332 0.108435 5.96855 0.181704 6.25407C0.568357 7.75901 1.92268 8.81008 3.47517 8.81008C5.35197 8.81008 6.87884 7.28311 6.87884 5.40622C6.87884 4.48067 6.51231 3.61454 5.84677 2.96739Z" fill="black"/>
-														</svg>
-														<span class="badge-count m-0">3.1K</span>
-													</span>
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-brands fa-ethereum"></i>
-														<span class="badge-count m-0">4.1K</span>
-													</span>
-												</div>
-												<div class="card-show-eye">
-													<div class="form-check form-switch d-flex align-items-center">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="card nft-card">
-										<a class="edit-nft btn-yellow" href="javaScript:void"><i class="fa-solid fa-pen"></i></a>
-										<img src="image/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
-										<div class="card-body">
-											<h5 class="card-title">Illusion, Perception</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.</p>
-											<div class="d-flex justify-content-between">
-												<div class="card-badge">
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-solid fa-medal"></i>
-														<svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
-															<path d="M5.84677 2.96739C5.78953 2.91177 5.70921 2.88649 5.63062 2.89941C5.55188 2.91229 5.48388 2.96172 5.44736 3.03266C5.32174 3.2767 5.16217 3.50097 4.97444 3.69922C4.99316 3.55601 5.00258 3.41194 5.00258 3.26749C5.00258 2.99031 4.96543 2.70507 4.89213 2.4196C4.65112 1.48195 4.01915 0.688984 3.15831 0.244052C3.08336 0.205328 2.99406 0.206687 2.92032 0.247677C2.84658 0.288684 2.79829 0.363866 2.79168 0.447962C2.72457 1.30006 2.28566 2.07528 1.58683 2.57535C1.57758 2.58202 1.5684 2.58876 1.55922 2.59548C1.5402 2.60939 1.52228 2.62255 1.50552 2.6336C1.50291 2.63534 1.5003 2.63712 1.49775 2.63895C1.05824 2.95363 0.695591 3.3731 0.448962 3.85214C0.198355 4.33941 0.0712891 4.86229 0.0712891 5.40622C0.0712891 5.68332 0.108435 5.96855 0.181704 6.25407C0.568357 7.75901 1.92268 8.81008 3.47517 8.81008C5.35197 8.81008 6.87884 7.28311 6.87884 5.40622C6.87884 4.48067 6.51231 3.61454 5.84677 2.96739Z" fill="black"/>
-														</svg>
-														<span class="badge-count m-0">3.1K</span>
-													</span>
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-brands fa-ethereum"></i>
-														<span class="badge-count m-0">4.1K</span>
-													</span>
-												</div>
-												<div class="card-show-eye">
-													<div class="form-check form-switch d-flex align-items-center">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="card nft-card">
-										<a class="edit-nft btn-yellow" href="javaScript:void"><i class="fa-solid fa-pen"></i></a>
-										<img src="image/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
-										<div class="card-body">
-											<h5 class="card-title">Illusion, Perception</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.</p>
-											<div class="d-flex justify-content-between">
-												<div class="card-badge">
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-solid fa-medal"></i>
-														<svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
-															<path d="M5.84677 2.96739C5.78953 2.91177 5.70921 2.88649 5.63062 2.89941C5.55188 2.91229 5.48388 2.96172 5.44736 3.03266C5.32174 3.2767 5.16217 3.50097 4.97444 3.69922C4.99316 3.55601 5.00258 3.41194 5.00258 3.26749C5.00258 2.99031 4.96543 2.70507 4.89213 2.4196C4.65112 1.48195 4.01915 0.688984 3.15831 0.244052C3.08336 0.205328 2.99406 0.206687 2.92032 0.247677C2.84658 0.288684 2.79829 0.363866 2.79168 0.447962C2.72457 1.30006 2.28566 2.07528 1.58683 2.57535C1.57758 2.58202 1.5684 2.58876 1.55922 2.59548C1.5402 2.60939 1.52228 2.62255 1.50552 2.6336C1.50291 2.63534 1.5003 2.63712 1.49775 2.63895C1.05824 2.95363 0.695591 3.3731 0.448962 3.85214C0.198355 4.33941 0.0712891 4.86229 0.0712891 5.40622C0.0712891 5.68332 0.108435 5.96855 0.181704 6.25407C0.568357 7.75901 1.92268 8.81008 3.47517 8.81008C5.35197 8.81008 6.87884 7.28311 6.87884 5.40622C6.87884 4.48067 6.51231 3.61454 5.84677 2.96739Z" fill="black"/>
-														</svg>
-														<span class="badge-count m-0">3.1K</span>
-													</span>
-													<span class="badge text-bg-secondary  rounded-pill">
-														<i class="fa-brands fa-ethereum"></i>
-														<span class="badge-count m-0">4.1K</span>
-													</span>
-												</div>
-												<div class="card-show-eye">
-													<div class="form-check form-switch d-flex align-items-center">
-														<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-													</div>
-												</div>
-											</div>
-											<a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
-										</div>
-									</div>
-								</div>
+                                  <x-cards.nft-card
+                                      :owner="true"
+                                      :title="'Illusion, Perception'"
+                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                  <x-cards.nft-card
+                                      :owner="true"
+                                      :title="'Illusion, Perception'"
+                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                  <x-cards.nft-card
+                                      :owner="true"
+                                      :title="'Illusion, Perception'"
+                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                  <x-cards.nft-card
+                                      :owner="true"
+                                      :title="'Illusion, Perception'"
+                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                  <x-cards.nft-card
+                                      :owner="true"
+                                      :title="'Illusion, Perception'"
+                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
+                                    />
+                                </div>
 							</div>
 						</div>
 					</div>
