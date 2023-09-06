@@ -76,9 +76,12 @@ class MarketplaceController extends Controller
             ];
         }
 
+        $members = json_decode($project->members, true)['members'];
+
         return view('marketplace.show', [
             "project" => $project,
             "owner" => $owner,
+            "members" => $members,
             "project_votes" => $project_feedback_votes,
             "blockchains" => $supported_blockchains,
             "project_type" => $project_type
