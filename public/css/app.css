@@ -31,6 +31,55 @@
 .nft-details .custom-menu {
   min-width: 25rem !important;
 }
+.nft-details div.member-avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nft-details div.member-avatar img {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  max-height: 58px;
+  max-width: 58px;
+  border-radius: 50%;
+}
+.nft-details h1.member-title {
+  margin: 0 !important;
+  font-family: Inter, "serif";
+  font-size: 1em;
+}
+.nft-details div.member-card {
+  border: 1px solid #DADADA;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0 4px 34px -5px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  width: 306px;
+  height: 104px;
+}
+.nft-details button.border-btn {
+  border: 1px solid #DADADA;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0 4px 34px -5px rgba(0, 0, 0, 0.15);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+.nft-details button.border-btn:hover {
+  opacity: 0.8;
+}
+.nft-details button.border-btn:active {
+  opacity: 0.6;
+}
+.nft-details button.border-btn #wrenchIcon {
+  fill: black;
+}
+.nft-details input[type=range] {
+  accent-color: gold !important;
+}
 
 .nft-info-section header {
   display: flex;
@@ -54,8 +103,8 @@
 
 /* cards */
 .icon-card {
-  border-radius: 10px;
   border: 1px solid #DADADA;
+  border-radius: 10px;
   background: #FFF;
   box-shadow: 0 4px 34px -5px rgba(0, 0, 0, 0.15);
   min-width: 141px;
@@ -96,4 +145,8 @@
   width: 1px;
   min-height: 4rem;
   height: 100%;
+}
+
+.rotate {
+  transform: rotate(180deg) !important;
 }
