@@ -14,6 +14,13 @@
     font-style: normal;
 }
 
+@mixin white-card {
+    border: 1px solid #DADADA;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0 4px 34px -5px rgba(0, 0, 0, 0.15);
+}
+
 // pages
 .nft-details {
     .nft-details-btn {
@@ -53,6 +60,57 @@
         min-width: 25rem !important;
     }
 
+    div.member-avatar {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            position: absolute;
+            left: 7px;
+            top: 7px;
+            max-height: 58px;
+            max-width: 58px;
+            border-radius: 50%;
+        }
+    }
+
+    h1.member-title {
+        margin: 0!important;
+        font-family: Inter, "serif";
+        font-size: 1em;
+    }
+
+    div.member-card {
+        @include white-card;
+        padding: 1rem;
+        width: 306px;
+        height: 104px;
+    }
+
+    button.border-btn {
+        @include white-card;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &:active {
+            opacity: 0.6;
+        }
+
+        #wrenchIcon {
+            fill: black;
+        }
+    }
+
+    input[type='range'] {
+       accent-color: gold !important;
+    }
 }
 
 .nft-info-section {
@@ -83,10 +141,7 @@
 
 /* cards */
 .icon-card {
-    border-radius: 10px;
-    border: 1px solid #DADADA;
-    background: #FFF;
-    box-shadow: 0 4px 34px -5px rgba(0, 0, 0, 0.15);
+    @include white-card;
     min-width: 141px;
     min-height: 149px;
     display: flex;
@@ -121,4 +176,10 @@
     width: 1px;
     min-height: 4rem;
     height: 100%;
+}
+
+// Animations
+
+.rotate {
+    transform: rotate(180deg) !important;
 }
