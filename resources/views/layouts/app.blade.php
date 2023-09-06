@@ -93,6 +93,7 @@
 
     @livewireScripts
     <!-- Vendor Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{asset('assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}"></script>
     <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
     @stack('js-plugin')
@@ -100,5 +101,6 @@
     <script src="{{asset('assets/js/theme.min.js')}}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
     @stack('custom-scripts')
+    @yield('javascript');
   </body>
 </html>
