@@ -6,7 +6,7 @@
     @endif
     <img src="{{asset('image')}}/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
     <div class="card-body">
-        <h5 class="card-title">{{$title}}</h5>
+        <h5 style="font-family: Inter, 'serif'; text-transform: capitalize"  class="card-title">{{$title}}</h5>
         <p class="card-text"
            style="white-space: nowrap;
                   overflow: hidden;
