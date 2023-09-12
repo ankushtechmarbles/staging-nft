@@ -15,7 +15,7 @@
                     <h6 style="font-family: Inter, 'serif'; margin: 0" class="font-weight-normal">{{$username}}</h6>
                 </div>
                 <div class="d-flex gap-1">
-                    <p style="margin: 0;">{{$supply}}/200</p>
+                    <p style="margin: 0;" id="nft-supply">.../200</p>
                     <div class="d-flex justify-content-center gap-2 align-items-center px-2"
                     style="border-radius: 180px;
                     border: 0.5px solid #000;
