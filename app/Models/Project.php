@@ -63,6 +63,7 @@ class Project extends Model
         'is_minted',
         'project_id',
         'user_id',
+        'nft_id'
     ];
 
     protected $dates = ['deleted_at', 'published_at'];
