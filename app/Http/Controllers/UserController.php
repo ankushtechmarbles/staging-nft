@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,6 +24,11 @@ class UserController extends Controller
      */
     public function dashboard()
     {
-        return view('dashboard.dashboard-new');
+//        get seven random projects
+        $projects = Project::inRandomOrder()->limit(7)->get();
+
+        return view('dashboard.dashboard-new', [
+            "projects" => $projects
+        ]);
     }
 }
