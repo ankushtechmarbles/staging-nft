@@ -262,55 +262,19 @@
 						</div>
 						<div class="col-md-9 content-element">
 							<div class="row g-3">
-								<div class="col-md-3">
-                                    <x-cards.nft-card
-                                        :owner="true"
-                                        :title="'Illusion, Perception'"
-                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
-                                    />
-								</div>
-								<div class="col-md-3">
-                                  <x-cards.nft-card
-                                      :owner="true"
-                                      :title="'Illusion, Perception'"
-                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
-                                    />
-                                </div>
-								<div class="col-md-3">
-                                  <x-cards.nft-card
-                                      :owner="true"
-                                      :title="'Illusion, Perception'"
-                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
-                                    />
-                                </div>
-                                <div class="col-md-3">
-                                  <x-cards.nft-card
-                                      :owner="true"
-                                      :title="'Illusion, Perception'"
-                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
-                                    />
-                                </div>
-                                <div class="col-md-3">
-                                  <x-cards.nft-card
-                                      :owner="true"
-                                      :title="'Illusion, Perception'"
-                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
-                                    />
-                                </div>
-                                <div class="col-md-3">
-                                  <x-cards.nft-card
-                                      :owner="true"
-                                      :title="'Illusion, Perception'"
-                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
-                                    />
-                                </div>
-                                <div class="col-md-3">
-                                  <x-cards.nft-card
-                                      :owner="true"
-                                      :title="'Illusion, Perception'"
-                                        :description="'Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit'"
-                                    />
-                                </div>
+                                @foreach($projects as $project)
+                                    <div class="col-md-3">
+                                        <x-cards.nft-card
+                                            :project="$project"
+                                            :owner="true"
+                                            :title="$project->title"
+                                            :description="$project->description"
+                                            :is_public="$project->is_public"
+                                            :is_minted="$project->is_minted"
+                                            :id="$project->id"
+                                        />
+                                    </div>
+                                @endforeach
 							</div>
 						</div>
 					</div>
@@ -540,9 +504,6 @@
 </div>
 </section>
 
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- bootstrap popper js -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -599,4 +560,37 @@
 
 @endsection
 @push('js-plugin')@endpush
-@push('custom-scripts')@endpush
+
+@push('custom-scripts')
+    <script>
+        Livewire.on('minted', async (nftData, supply) => {
+            $('#toast-message').html('Minting completed. Setting up claim phase transaction.');
+            $("#liveToast").toast('show');
+
+            const id = nftData.data[0].id;
+
+            const contract = await window.walletSdk.getContract('0x247cebbf74CD0E62350538F1DE8333a3FC85Dbb7', 'edition-drop')
+
+            const txResult = await contract.erc1155.claimConditions.set(id,
+                [
+                    {
+                        metadata: {
+                            name: "Phase 1", // The name of the phase
+                        },
+                        price: 0.001, // The price of the token in the currency specified above
+                        maxClaimablePerWallet: 1, // The maximum number of tokens a wallet can claim
+                        maxClaimableSupply: supply, // The total number of tokens that can be claimed in this phase
+                        startTime: new Date(), // When the phase starts (i.e. when users can start claiming tokens)
+                        waitInSeconds: 60 * 60 * 24 * 7, // The period of time users must wait between repeat claims
+                    },
+                ],
+                false,);
+        });
+
+        Livewire.on('mint_failed', () => {
+            $('#toast-message').html(`Minting failed. Please try again later.`);
+
+            $("#liveToast").toast('show');
+        });
+    </script>
+@endpush
