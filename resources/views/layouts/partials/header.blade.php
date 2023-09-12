@@ -142,6 +142,11 @@
                     walletBtn.innerHTML = 'Connect Wallet';
                     walletBtn.setAttribute('data-bs-target', '#exampleModal');
                 }
+
+                document.dispatchEvent(
+                    new CustomEvent("wallet:installed", {
+                    })
+                );
             }
         });
     </script>
