@@ -26,7 +26,7 @@ class MarketplaceController extends Controller
         $project = Project::where('id', $id)->firstOrFail();
         $owner = User::where('id', $project->user_id)->firstOrFail();
         $supported_blockchains = SupportedBlockchains::where('id', $project->supported_blockchains_id)->firstOrFail();
-        $project_scores = $project->projectScores;
+        $project_scores = $project->projectScores->first();
         $project_feedback = $project->projectFeedBacks;
         $project_type = ProjectType::where('id', $project->project_type_id)->firstOrFail();
 
@@ -84,7 +84,8 @@ class MarketplaceController extends Controller
             "members" => $members,
             "project_votes" => $project_feedback_votes,
             "blockchains" => $supported_blockchains,
-            "project_type" => $project_type
+            "project_type" => $project_type,
+            "project_score" => $project_scores
         ]);
     }
 }
