@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Livewire\CourseStudyController;
 use App\Http\Controllers\CourseController;
@@ -86,8 +87,8 @@ Auth::routes(['register' => false]);
 
 Auth::routes();
 
-//Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'dashboard'])->name('dashboard');
-Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'dashboard'])->name('dashboard');
+// user
+Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
 
 /*admin side*/
