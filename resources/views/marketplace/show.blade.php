@@ -9,6 +9,7 @@
         <div class="row gap-5">
             <section class="col-5 mb-5 d-flex flex-column gap-3">
                     <x-cards.nft-card
+                      :score="$project_score->total_score"
                       :title="$project->title"
                       :description="$project->description"
                       :owners="$project->owners"
@@ -19,7 +20,7 @@
                     />
                 {{--    Button Container      --}}
                 <div class="d-flex justify-content-between gap-3">
-                    <button class="nft-details-btn gold">Buy now</button>
+                    <button id="nft-claim" style="cursor: not-allowed" class="nft-details-btn gold" disabled>Buy now</button>
                     <button type="button" class="nft-details-btn vote" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         <x-svg.chevron-up-icon />
                         Vote
@@ -27,74 +28,7 @@
                 </div>
 
                 {{--     Ranking      --}}
-                <div class="border" style="border-radius: 32px; box-shadow: 2px 2px 0 0 #000;">
-                    <div class="collapse investForm" id="collapseExample">
-                        <div class="px-4 py-5">
-                            <h1 style="font-family: Inter, 'serif'; font-size: 1.5em; text-align: center">Would you invest in this idea?</h1>
-                            <form class="d-grid gap-3" onsubmit="">
-                                <div class="row gap-3 justify-content-center">
-                                    <button type="button" class="d-flex justify-content-around align-items-center border-btn col-5" style="font-size: 1.25em">
-                                        <x-svg.checkmark-circle-icon />
-                                        Yes
-                                    </button>
-                                    <button type="button" class="d-flex justify-content-around align-items-center border-btn col-5" style="font-size: 1.25em">
-                                        <x-svg.close-icon />
-                                        No
-                                    </button>
-                                </div>
-                                <div class="row gap-4 justify-content-center">
-                                    <p class="d-flex px-5 col-12" style="margin: 0; padding: 0;">Provide additional feedback</p>
-                                    <button type="button" class="d-flex justify-content-around align-items-center border-btn col-10">
-                                        <x-svg.checkmark-icon />
-                                        I would use this
-                                    </button>
-                                    <button type="button" class="d-flex justify-content-around align-items-center border-btn col-10">
-                                        <x-svg.money-circle />
-                                        I would pay to use this
-                                    </button>
-                                    <button type="button" class="d-flex justify-content-around align-items-center border-btn col-10">
-                                        <x-svg.wrench-icon />
-                                        I can help build this
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="d-flex w-full justify-content-between py-1 px-3" >
-                        <span>❤️🎖️🔥💰 5.9</span>
-                        <span class="badge bg-primary px-3 py-2 uppercase" style="border-radius: 16px">Rank: 4382</span>
-                    </div>
-                    <div class="collapse" id="collapseExample">
-                        <div class="px-4 py-3">
-                            <hr />
-                            <div class="mb-3 mt-5">
-                                <label for="customRange1" id='feasibility' class="form-label">5 - Feasibility
-                                    ❤️</label>
-                                <input type="range" class="form-range" wire:model="feasibility" min="0" max="10"
-                                       value='5' step="1" id="customRange1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="customRange2" id='architecture' class="form-label">5 - Architecture 🏅</label>
-                                <input type="range" class="form-range" wire:model="architecture" min="0" max="10"
-                                       value='5' step="1" id="customRange2">
-                            </div>
-                            <div class="mb-3">
-                                <label for="customRange3" id='innovative' class="form-label">5 - Innovative 🔥</label>
-                                <input type="range" class="form-range" wire:model="innovative" min="0" max="10"
-                                       value='5' step="1" id="customRange3">
-                            </div>
-                            <button type="button" wire:click="vote({{ $project->id }})" id='submit-btn'
-                                    class="btn btn-primary btn-vote" style="border-color: black; margin-right: 1rem">Vote</button>
-                            <button type="button" wire:click="vote({{ $project->id }})" id='submit-btn'
-                                    class="btn btn-primary btn-vote" style="background: #029E57; color: white; border-color: black;">Submit</button>
-                            <hr style="margin-top: 1rem; margin-bottom: 1rem"></hr>
-                            @guest
-                                <a class="dropdown-item" href="/auth/login">You must be logged in to vote? <span style="color: #2745E2">Login</span></a>
-                            @endguest
-
-                        </div>
-                    </div>
-                </div>
+                <livewire:listing-vote-form :project="$project" :score="$project_score->total_score"/>
             </section>
             {{--    Project Details    --}}
             <section class="col-6 nft-info-section">
@@ -143,6 +77,8 @@
 @push('js-plugin')@endpush
 @push('custom-scripts')
     <script>
+        const tokenId = @json($project->nft_id);
+
         function updateNumber(e) {
             const value = e.target.value;
             const prev = e.target.previousElementSibling;
@@ -168,6 +104,12 @@
             document.querySelector('#chevronUp').classList.toggle('rotate');
         });
 
+        function updateStyles(ele) {
+            ele.classList.remove('active')
+            ele.style.background = 'white';
+            ele.style.color = 'black';
+        }
+
         // Vote button listeners
         document.querySelectorAll('.border-btn').forEach((ele) => {
             ele.addEventListener('click', (e) => {
@@ -175,17 +117,83 @@
                 // check for button type
                 if(e.target.classList.contains('border-btn')) {
                     if(e.target.classList.contains('active')) {
-                        e.target.classList.remove('active')
-                        e.target.style.background = 'white';
-                        e.target.style.color = 'black';
-                        return;
+                        updateStyles(e.target);
                     } else {
                         e.target.classList.add('active')
                         e.target.style.background = '#029E57';
                         e.target.style.color = 'white';
+
+                        if(e.target.innerText === 'No') {
+                            updateStyles(document.querySelector('#yesBtn'));
+                        } else if (e.target.innerText === 'Yes') {
+                            updateStyles(document.querySelector('#noBtn'));
+                        }
                     }
                 }
             });
         })
+
+        $('#nft-claim').click(async function(){
+            try {
+                // update button text
+                $(this).html('Claiming...');
+
+                const contract = await window.walletSdk.getContract('0x247cebbf74CD0E62350538F1DE8333a3FC85Dbb7', 'edition-drop')
+
+                const tx = await contract.erc1155.claim(tokenId, 1);
+
+                $('#toast-message').html(`NFT claimed.`);
+
+                $("#liveToast").toast('show');
+
+                $(this).html('Buy Now');
+
+                const totalSupply = await contract.erc1155.totalSupply(tokenId);
+                $('#nft-supply').html(`${totalSupply.toNumber()}/200`);
+            } catch (e) {
+                $('#toast-message').html(`NFT claim failed.`);
+                $("#liveToast").toast('show');
+                $(this).html('Buy Now');
+            }
+        });
+
+        // document ready
+        $(document).ready(async function() {
+            if(tokenId) {
+                const sdk = new window.thirdweb.ThirdwebSDK("mumbai", {
+                    clientId: "44aa3ec3d8ffe49358a72c91c8e99e83",
+                });
+                const contract = await sdk.getContract('0x247cebbf74CD0E62350538F1DE8333a3FC85Dbb7', 'edition-drop')
+                const totalSupply = await contract.erc1155.totalSupply(tokenId);
+                $('#nft-supply').html(`${totalSupply.toNumber()}/200`);
+
+                const activePhase = await contract.erc1155.claimConditions.getActive(
+                    tokenId,
+                );
+
+                const price = Number(activePhase.currencyMetadata.displayValue);
+                const numberClaimed = totalSupply.toNumber();
+                const ethMade = price * numberClaimed;
+
+                $('#eth-count').html(`${ethMade} ETH`);
+
+                document.addEventListener('wallet:installed', async function() {
+                        const ownedSupply = await contract.call("getSupplyClaimedByWallet", [tokenId, 0, await window.walletSdk.wallet.getAddress()]);
+
+                        if(ownedSupply > 0) {
+                            $('#nft-claim').html('Claimed');
+                            $('#nft-claim').attr('disabled', true).css('cursor', 'not-allowed');
+                        } else {
+                            $('#nft-claim').html('Buy Now');
+                            $('#nft-claim').attr('disabled', false).css('cursor', 'pointer');
+                        }
+                });
+            } else {
+                $('#nft-supply').html(`0/200`);
+            }
+        });
+
+
+
     </script>
 @endpush
