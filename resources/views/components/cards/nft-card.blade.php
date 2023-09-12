@@ -1,4 +1,4 @@
-@props(['owner', 'title', 'description', 'owners', 'eth', 'slug', 'img', 'id'])
+@props(['owner', 'title', 'description', 'owners', 'eth', 'score', 'slug', 'img', 'id', 'project', 'is_public',])
 
 <div class="card nft-card">
     @if(isset($owner) && $owner)
@@ -19,23 +19,30 @@
                 <span class="badge text-bg-secondary rounded-pill" style="background: #03CB70 !important; border: 1px solid black" >
                     <i class="fa-solid fa-medal"></i>
                     <x-svg.flame-icon />
-                    <span class="badge-count m-0">3.1K</span>
+                    <span class="badge-count m-0">{{isset($score) && $score}}K</span>
                 </span>
-                <span class="badge text-bg-secondary  rounded-pill" style="background: #03CB70 !important; border: 1px solid black">
+                <span class="badge text-bg-secondary rounded-pill" style="background: #03CB70 !important; border: 1px solid black">
                     <i class="fa-brands fa-ethereum"></i>
-                    <span class="badge-count m-0">4.1K</span>
+                    <span id="eth-count" class="badge-count m-0">ETH</span>
                 </span>
             </div>
             <div class="card-show-eye">
                 @if(isset($owner) && $owner)
                     <div class="form-check form-switch d-flex align-items-center">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="flexSwitchCheckChecked"
+                            style="cursor: pointer;"
+                        />
+
                     </div>
                 @endif
             </div>
         </div>
         @if(isset($owner) && $owner)
-            <a href="#" class="btn btn-mint btn-yellow text-dark rounded border py-2">Mint</a>
+            <livewire:mint-modal :project-id="$project->id" />
         @endif
     </div>
 </div>
