@@ -147,6 +147,15 @@
   height: 100%;
 }
 
+button.btn_green {
+  background: #029E57;
+  color: #fff !important;
+}
+button.btn_green:hover {
+  opacity: 0.75 !important;
+  background: #029E57 !important;
+}
+
 .rotate {
   transform: rotate(180deg) !important;
 }
