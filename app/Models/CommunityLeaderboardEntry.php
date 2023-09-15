@@ -15,4 +15,12 @@ class CommunityLeaderboardEntry extends Model
     {
         return $this->belongsTo(CommunityLeaderboard::class);
     }
+
+    protected $fillable = [
+        'project_id',
+        'community_leaderboard_id',
+        'total_score',
+        'rank',
+        'is_active',
+    ];
 }

@@ -24,6 +24,11 @@ class Project extends Model
         return $this->hasMany(ProjectScore::class);
     }
 
+    public function communityScores()
+    {
+        return $this->hasMany(CommunityScore::class);
+    }
+
     public function projectFeedbacks()
     {
         return $this->hasMany(ProjectFeedBack::class);

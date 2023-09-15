@@ -15,6 +15,7 @@ class ProjectFeedBack extends Model
         "help_vote",
         "payment_vote",
         "project_id",
+        "user_id",
         "investment_amount",
     ];
 
