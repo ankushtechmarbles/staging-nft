@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\UserProjectVotesTracker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProjectScoreFactory extends Factory

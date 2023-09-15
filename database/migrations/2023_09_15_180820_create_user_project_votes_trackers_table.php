@@ -1,11 +1,13 @@
 <?php
 
 use App\Models\Project;
+use App\Models\ProjectScore;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommunityScoresTable extends Migration
+class CreateUserProjectVotesTrackersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +16,11 @@ class CreateCommunityScoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('community_scores', function (Blueprint $table) {
+        Schema::create('user_project_votes_trackers', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class);
             $table->foreignIdFor(Project::class);
-            $table->decimal('usable', 8, 2)->defualt('0.00');
-            $table->decimal('payment', 8, 2)->defualt('0.00');
-            $table->decimal('build', 8, 2)->defualt('0.00');
-            $table->decimal('invest', 8, 2)->defualt('0.00');
-            $table->decimal('total_score', 8, 2)->defualt('0.00');
+            $table->foreignIdFor(ProjectScore::class);
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateCommunityScoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('community_scores');
+        Schema::dropIfExists('user_project_votes_trackers');
     }
 }

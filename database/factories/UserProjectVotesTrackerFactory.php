@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\UserProjectVotesTracker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CommunityLeaderboardEntryFactory extends Factory
+class UserProjectVotesTrackerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +16,7 @@ class CommunityLeaderboardEntryFactory extends Factory
     public function definition()
     {
         return [
-            'community_leaderboard_id' => 1,
-            'project_id' => 1,
+            //
         ];
     }
 }

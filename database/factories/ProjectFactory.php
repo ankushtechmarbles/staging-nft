@@ -47,6 +47,7 @@ class ProjectFactory extends Factory
             "project_track_id" => $this->faker->numberBetween(1, 5),
             "project_type_id" => $this->faker->numberBetween(1, 5),
             'user_id' => User::all()->random()->id,
+            "nft_id" => 0,
         ];
     }
 }

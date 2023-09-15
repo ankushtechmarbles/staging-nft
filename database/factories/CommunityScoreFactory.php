@@ -14,7 +14,11 @@ class CommunityScoreFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'usable' => $this->faker->randomFloat(2, 0, 100),
+            'payment' => $this->faker->randomFloat(2, 0, 100),
+            'build' => $this->faker->randomFloat(2, 0, 100),
+            'invest' => $this->faker->randomFloat(2, 0, 100),
+            'total_score' => $this->faker->randomFloat(2, 0, 100)
         ];
     }
 }

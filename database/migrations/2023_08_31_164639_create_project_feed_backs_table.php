@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ class CreateProjectFeedBacksTable extends Migration
         Schema::create('project_feed_backs', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Project::class);
+            $table->foreignIdFor(User::class);
             $table->boolean('investment_vote');
             $table->boolean('usable_vote');
             $table->boolean('help_vote');
