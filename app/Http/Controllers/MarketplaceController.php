@@ -47,12 +47,13 @@ class MarketplaceController extends Controller
 
         $project_feedback_votes = [];
         foreach ($project_feedback as $feedback) {
+            $rounded_number = $this->intWithStyle($total_investment_amount);
             $project_feedback_votes = [
                  [
                     "title" => $total_investment_vote . " people",
-                    "description" => "would invest in this idea ($28k)",
+                    "description" => "would invest in this idea ($$rounded_number)",
                     "amount" => $total_investment_vote,
-                     "investment_amount" => $total_investment_amount,
+                    "investment_amount" => $total_investment_amount,
                     "icon" => "users",
                 ],
                  [
@@ -87,5 +88,13 @@ class MarketplaceController extends Controller
             "project_type" => $project_type,
             "project_score" => $project_scores
         ]);
+    }
+
+    private function intWithStyle($n)
+    {
+        if ($n < 1000) return $n;
+        $suffix = ['','k','M','G','T','P','E','Z','Y'];
+        $power = floor(log($n, 1000));
+        return round($n/(1000**$power),1,PHP_ROUND_HALF_EVEN).$suffix[$power];
     }
 }
