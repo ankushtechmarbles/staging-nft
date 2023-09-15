@@ -63,12 +63,14 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn mb-3 btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
                     </form>
+
+                    <span class="mt-5">Have an account? <a href="{{route('login')}}">Login</a></span>
                 </div>
             </div>
         </div>

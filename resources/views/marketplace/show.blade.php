@@ -21,7 +21,7 @@
                 {{--    Button Container      --}}
                 <div class="d-flex justify-content-between gap-3">
                     <button id="nft-claim" style="cursor: not-allowed" class="nft-details-btn gold" disabled>Buy now</button>
-                    <button type="button" class="nft-details-btn vote" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <button type="button" class="nft-details-btn vote" data-bs-toggle="collapse" data-bs-target="#voteForm" aria-expanded="false" aria-controls="voteForm">
                         <x-svg.chevron-up-icon />
                         Vote
                     </button>
@@ -80,6 +80,9 @@
         const tokenId = @json($project->nft_id);
 
         function updateNumber(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
             const value = e.target.value;
             const prev = e.target.previousElementSibling;
             const prevText = prev.textContent;
@@ -96,11 +99,17 @@
         document.getElementById('customRange3').addEventListener('input', updateNumber)
 
         let trigger = document.getElementById('dropdownMenuButton1')
-        document.getElementById('submit-btn').addEventListener("click", () => {
+        document.getElementById('submit-btn').addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
             bootstrap.Dropdown.getOrCreateInstance(trigger).toggle()
         });
 
         document.querySelector('.vote').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
             document.querySelector('#chevronUp').classList.toggle('rotate');
         });
 
@@ -159,26 +168,25 @@
 
         // document ready
         $(document).ready(async function() {
-            if(tokenId) {
-                const sdk = new window.thirdweb.ThirdwebSDK("mumbai", {
-                    clientId: "44aa3ec3d8ffe49358a72c91c8e99e83",
-                });
-                const contract = await sdk.getContract('0x247cebbf74CD0E62350538F1DE8333a3FC85Dbb7', 'edition-drop')
-                const totalSupply = await contract.erc1155.totalSupply(tokenId);
-                $('#nft-supply').html(`${totalSupply.toNumber()}/200`);
+            document.addEventListener("contract:init", async () => {
+                if(tokenId) {
+                    const totalSupply = await window.EditionContract.erc1155.totalSupply(tokenId);
+                    $('#nft-supply').html(`${totalSupply.toNumber()}/200`);
 
-                const activePhase = await contract.erc1155.claimConditions.getActive(
-                    tokenId,
-                );
+                    const activePhase = await window.EditionContract.erc1155.claimConditions.getActive(
+                        tokenId,
+                    );
 
-                const price = Number(activePhase.currencyMetadata.displayValue);
-                const numberClaimed = totalSupply.toNumber();
-                const ethMade = price * numberClaimed;
+                    const price = Number(activePhase.currencyMetadata.displayValue);
+                    const numberClaimed = totalSupply.toNumber();
+                    const ethMade = price * numberClaimed;
 
-                $('#eth-count').html(`${ethMade} ETH`);
+                    $('#eth-count').html(`${ethMade} ETH`);
 
-                document.addEventListener('wallet:installed', async function() {
-                        const ownedSupply = await contract.call("getSupplyClaimedByWallet", [tokenId, 0, await window.walletSdk.wallet.getAddress()]);
+                    document.addEventListener('wallet:installed', async function() {
+                        const walletAddress = await window.walletSdk.wallet.getAddress();
+
+                        const ownedSupply = await window.EditionContract.call("getSupplyClaimedByWallet", [tokenId, 0, walletAddress]);
 
                         if(ownedSupply > 0) {
                             $('#nft-claim').html('Claimed');
@@ -187,13 +195,11 @@
                             $('#nft-claim').html('Buy Now');
                             $('#nft-claim').attr('disabled', false).css('cursor', 'pointer');
                         }
-                });
-            } else {
-                $('#nft-supply').html(`0/200`);
-            }
+                    });
+                } else {
+                    $('#nft-supply').html(`0/200`);
+                }
+            });
         });
-
-
-
     </script>
 @endpush

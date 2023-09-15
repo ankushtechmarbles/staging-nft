@@ -21,12 +21,12 @@
 						<img src="image/user-image.png">
 					</div>
 					<div class="avtar_details">
-						<h2 class="user_avtar_name">dota_alex.eth</h2>
+						<h2 class="user_avtar_name">{{$user->name}}</h2>
 						<div class="selection-join-date">
 							<span>
 								dropdown here
 							</span>
-							<span>Joined in may2,2023</span>
+							<span>Joined {{$user->created_at->diffForHumans()}}</span>
 						</div>
 					</div>
 				</div>
@@ -100,7 +100,7 @@
 								</button>
 							</div>
 							<div class="live-indicator-wrapper">
-								<span class="indicator-before text-dark">Live </span><span> 182 </span>Results
+								<span class="indicator-before text-dark">Live </span><span> {{$live_nfts}} </span>Results
 							</div>
 						</div>
 						<div class="col-9">
@@ -261,6 +261,12 @@
 							</div>
 						</div>
 						<div class="col-md-9 content-element">
+                            @if(count($projects) == 0)
+                                <div class="d-flex justify-content-center align-items-center" style="height: 100%">
+                                    <span>Create a project to begin your new idea</span>
+                                </div>
+                            @endif
+
 							<div class="row g-3">
                                 @foreach($projects as $project)
                                     <div class="col-md-3">
@@ -286,218 +292,16 @@
 	<!-- Tab 1 end -->
 
 	<!-- Tab 2 (Explore) -->
-	<div class="tab-content py3 bg-light" id="nav-tabContent">
+	<div class="tab-content mt-5 py3 bg-light" id="nav-tabContent">
 		<div class="tab-pane fade active show size_chart" id="explore" role="tabpanel" aria-labelledby="explore-tab">
-				<div class="container inner-element">
-					<div class="explore-utility">
-						<div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					        <img src="image/explore02.jpeg">
-					        <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					        <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					      	  <img src="image/explore04.jpeg">
-					        <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					         <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					       <img src="image/explore02.jpeg">
-					       <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					         <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					       <img src="image/explore03.jpeg">
-					       <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					         <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					       <img src="image/explore07.jpeg">
-					       <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					         <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					       <img src="image/explore08.jpeg">
-					       <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					         <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					       <img src="image/explore05.jpeg">
-					       <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					         <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					    <div class="col-sm-6 col-lg-3 mb-4">
-					      <div class="card position-relative overflow-hidden">
-					       <img src="image/explore06.jpeg">
-					       <div class="card-body position-absolute d-flex align-items-center card-after-hover">
-					          <div class="content_info">
-					          	<h5 class="card-title">Illusion, Perception</h5>
-					          	<p class="card-text">Lorem ipsum dolor sit amet, con s,e,cte tur adipiscing elit.Lorem ipsum dolor sit </p>
-					          </div>
-					          <div class="nft_value">
-					          	<div class="p-2 d-flex flex-column align-items-center justify-content-center gap-1">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					         <div class="card-before-hover">
-					        	<div class="nft_value d-flex">
-					          	<div class="p-2 d-flex align-items-center justify-content-center">
-					          		<span class="arrow_up_icon"><img src="image/arrow-up.svg"></span>
-					          		<span class="value">1224</span>
-					          	</div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					  </div>
-						</div>
-
-					  <div class="lode-more-button text-center">
-					  	<button type="button" id="load_more" class="btn btn_green text-dark">Lode More</button>
-					  </div>
-				</div>
+            <div class="container inner-element">
+                <div class="explore-utility">
+                    <div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
+                        <livewire:explore-more />
+                        <livewire:explore-more-projects />
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 	<!-- Tab 2 end -->

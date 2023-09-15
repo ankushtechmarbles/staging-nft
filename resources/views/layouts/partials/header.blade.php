@@ -44,21 +44,28 @@
         </div>
 
         <div class="d-flex align-items-center order-lg-2 ms-auto gap-2">
-{{--            @if (auth()->user())--}}
-                <a href="{{route('dashboard')}}" class="btn btn-warning rounded-pill d-none d-lg-inline-flex" style="padding: 0.5rem">
-                    <svg class="icon-width">
-                        <use xlink:href="{{ asset('assets/img/idea-icon.svg#user') }}"></use>
-                    </svg>
-                </a>
-{{--            @endif--}}
-{{--            @guest--}}
+            @if (auth()->user())
+                <span class="dropdown">
+                    <a href="#" class="btn btn-warning rounded-pill d-none d-lg-inline-flex" data-bs-toggle="dropdown" style="padding: 0.5rem">
+                        <svg class="icon-width">
+                            <use xlink:href="{{ asset('assets/img/idea-icon.svg#user') }}"></use>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu mt-2">
+                        <li><a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a></li>
+                        <form method="POST" action="{{route('logout')}}">
+                            <li><button type="submit" class="dropdown-item">Logout</button></li>
+                        </form>
+                    </ul>
+                </span>
+
                 <button
                     href="{{route('dashboard')}}"
                     class="btn btn-warning rounded-pill d-none d-lg-inline-flex"
                     id="walletConnectBtn"
                     data-bs-toggle="modal"
                 >
-                    Checking for wallet..
+                    Connect Wallet
                 </button>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -71,15 +78,22 @@
                             <div class="modal-body">
                                 <div class="grid">
                                     <div class="row justify-content-center align-items-center gap-3">
-                                        <button class="btn btn-primary col-10" id="connectMetamask">Connect MetaMask</button>
-                                        <button class="btn btn-primary col-10" id="connectPaper">Connect PaperWallet</button>
+                                        <button class="btn btn-primary col-10" data-bs-dismiss="modal" id="connectMetamask">Connect MetaMask</button>
+                                        <button class="btn btn-primary col-10" data-bs-dismiss="modal" id="connectPaper">Connect PaperWallet</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-{{--            @endguest--}}
+            @endif
+            @guest
+                <a href="{{route('auth')}}" class="btn btn-warning rounded-pill d-none d-lg-inline-flex" style="padding: 0.5rem">
+                    <svg class="icon-width">
+                        <use xlink:href="{{ asset('assets/img/idea-icon.svg#user') }}"></use>
+                    </svg>
+                </a>
+            @endguest
         </div>
 
         {{--   Mobile    --}}
@@ -92,22 +106,35 @@
 
 @section('javascript')
     <script>
-        $(document).ready(async function() {
+        const address = localStorage.getItem('address');
+        if(address) {
+            const walletBtn = document.querySelector('#walletConnectBtn');
+            walletBtn.innerHTML = `${address.slice(0, 6)}...${address.slice(-4)}`;
+        } else {
+            const walletBtn = document.querySelector('#walletConnectBtn');
+            walletBtn.innerHTML = 'Connect Wallet';
+            walletBtn.setAttribute('data-bs-target', '#exampleModal');
+        }
 
-            // check for paper
+        $(document).ready(async function() {
+          let paperFail, metamaskFail = false;
+
             try {
                 if(!!(await window.PaperWallet.getAddress())) {
                     createWalletSdk(window.PaperWallet, await window.PaperWallet.getAddress());
                 }
             } catch (e) {
+              paperFail = true;
                 console.log(e);
             }
 
             try {
-                if(!!(await window.MetaMask.getAddress())) {
+                const address = await window.MetaMask.getAddress();
+                if(!!(address)) {
                     createWalletSdk(window.MetaMask, await window.MetaMask.getAddress());
                 }
             } catch (e) {
+                metamaskFail = true;
                 console.log(e);
             }
 
@@ -132,21 +159,25 @@
                 updateWalletConnectBtn(address);
             }
 
-            function updateWalletConnectBtn(address= '') {
+            function updateWalletConnectBtn(address = '') {
                 const walletBtn = document.querySelector('#walletConnectBtn');
 
                 // update text
                 if(window.walletSdk) {
-                    walletBtn.innerHTML = `Address: ${address.slice(0, 6)}...${address.slice(-4)}`;
-                } else {
-                    walletBtn.innerHTML = 'Connect Wallet';
-                    walletBtn.setAttribute('data-bs-target', '#exampleModal');
-                }
+                    localStorage.setItem('address', address);
+                    walletBtn.innerHTML = `${address.slice(0, 6)}...${address.slice(-4)}`;
 
-                document.dispatchEvent(
-                    new CustomEvent("wallet:installed", {
-                    })
-                );
+                    document.dispatchEvent(
+                        new CustomEvent("wallet:installed", {
+                        })
+                    );
+                } else {
+                    if(paperFail && metamaskFail) {
+                        walletBtn.innerHTML = 'Connect Wallet';
+                        walletBtn.setAttribute('data-bs-target', '#exampleModal');
+                        localStorage.removeItem('address');
+                    }
+                }
             }
         });
     </script>

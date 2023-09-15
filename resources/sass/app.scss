@@ -178,6 +178,16 @@
     height: 100%;
 }
 
+button.btn_green{
+    background: #029E57;
+    color: #fff !important;
+
+    &:hover {
+        opacity: 0.75 !important;
+        background: #029E57 !important;
+    }
+}
+
 // Animations
 
 .rotate {

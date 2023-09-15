@@ -13,6 +13,7 @@
                             :id="$project->id"
                             :img="'image/pro_'"
                             :slug="$project->slug"
+                            :score="$project->total_score"
                         />
                     </a>
                 </div>
