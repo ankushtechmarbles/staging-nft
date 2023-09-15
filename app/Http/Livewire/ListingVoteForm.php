@@ -3,12 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Models\Project;
+use App\Models\ProjectFeedBack;
 use App\Models\ProjectScore;
 use App\Models\User;
+use App\Models\UserProjectVotesTracker;
 use Livewire\Component;
 
 class ListingVoteForm extends Component
 {
+    public $editting = false;
     public $project;
     public $score;
     public $rank;
@@ -18,23 +21,48 @@ class ListingVoteForm extends Component
     public $projectScore;
     public $error;
     public $success;
+    public $has_voted = false;
 
-    //    community vote
-    public $investPositive = false;
-    public $investNegative = false;
-    public $wouldUse = false;
-    public $wouldPay = false;
-    public $wouldBuild = false;
+    //    feedback vote
+    public $investPositive;
+    public $investNegative;
+    public $wouldUse;
+    public $wouldPay;
+    public $wouldBuild;
+    public $feedbackGiven;
 
     public function render()
     {
         // get all projects order by total score
-        $projects = Project::with('projectScores')->orderBy('total_score', 'desc');
+        $projects = Project::with('projectScores');
 
         // get project by rank from $projects
-        $this->rank = $projects->get()->search(function ($item) {
-            return $item->id == $this->project->id;
-        }) + 1;
+        if($projects) {
+            $this->rank = $projects->get()->search(function ($item) {
+                return $item->id == $this->project->id;
+            }) + 1;
+        }
+
+        //        check to see if user has  made a project feedback vote
+        $user = $this->auth_check();
+
+        if ($user) {
+            $projectFeedback = ProjectFeedback::where('project_id', $this->project->id)->where('user_id', $user->id)->first();
+            if ($projectFeedback) {
+                $this->investPositive = $projectFeedback->investment_vote;
+                $this->investNegative = !$projectFeedback->investment_vote;
+                $this->wouldUse = $projectFeedback->usable_vote;
+                $this->wouldPay = $projectFeedback->payment_vote;
+                $this->wouldBuild = $projectFeedback->help_vote;
+                $this->feedbackGiven = true;
+            }
+
+            $projectVoteTracker = UserProjectVotesTracker::where('project_id', $this->project->id)->where('user_id', $user->id)->first();
+
+            if($projectVoteTracker) {
+                $this->has_voted = true;
+            }
+        }
 
         return view('livewire.listing-vote-form');
     }
@@ -44,9 +72,9 @@ class ListingVoteForm extends Component
             $user = $this->auth_check();
 
             $projectScore = ProjectScore::where('project_id', $projectID)->first();
-            $projectScore->medal = $this->architecture;
-            $projectScore->heart = $this->feasibility;
-            $projectScore->fire = $this->innovative;
+            $projectScore->medal += $this->architecture;
+            $projectScore->heart += $this->feasibility;
+            $projectScore->fire += $this->innovative;
             $money_bag = $projectScore->money_bag || 0;
 
             $total_score = ($projectScore->medal / 10 * 35 / 10) + ($projectScore->heart / 10 * 35 / 10) + ($projectScore->fire / 10 * 35 / 10);
@@ -76,6 +104,18 @@ class ListingVoteForm extends Component
             $projectScore->total_score = $total_score;
             $projectScore->save();
 
+            // update score field
+            $this->score = $total_score;
+
+//            create new tracker
+            $projectVoteTracker = new UserProjectVotesTracker();
+            $projectVoteTracker->project_id = $projectID;
+            $projectVoteTracker->user_id = $user->id;
+            $projectVoteTracker->project_score_id = $projectScore->id;
+            $projectVoteTracker->save();
+
+            $this->has_voted = true;
+
             if ($user->credits) {
                 $user->credits = $user->credits - 1;
             } else {
@@ -92,17 +132,70 @@ class ListingVoteForm extends Component
         }
     }
 
-    public function vote_community($projectID)
+    public function submit_feedback($projectID)
     {
         try {
             $user = $this->auth_check();
+
+//            check to see if user has already voted
+            $projectFeedback = ProjectFeedback::where('project_id', $projectID)->where('user_id', $user->id)->first();
+            if ($projectFeedback) {
+                $this->error = 'You have already voted for this project!';
+                return;
+            }
+
+            // create new project feedback
+            $projectFeedback = new ProjectFeedback();
+            $projectFeedback->project_id = $projectID;
+            $projectFeedback->user_id = $user->id;
+            $projectFeedback->investment_vote = $this->investPositive;
+            $projectFeedback->usable_vote = $this->wouldUse;
+            $projectFeedback->payment_vote = $this->wouldPay;
+            $projectFeedback->help_vote = $this->wouldBuild;
+            $projectFeedback->investment_amount = 1000;
+            $projectFeedback->save();
+
+            $this->success = 'Vote successful !';
+            return;
         } catch (\Throwable $th) {
             //throw $th;
         }
     }
 
+    public function updateFeedback($name)
+    {
+        $this->editting = true;
+        // use switch statement to update feedback values
+        switch ($name) {
+            case 'investPositive':
+                $this->investPositive = true;
+                $this->investNegative = false;
+                break;
+            case 'investNegative':
+                $this->investPositive = false;
+                $this->investNegative = true;
+                break;
+            case 'wouldUse':
+                $this->wouldUse = !$this->wouldUse;
+                break;
+            case 'wouldPay':
+                $this->wouldPay = !$this->wouldPay;
+                break;
+            case 'wouldBuild':
+                $this->wouldBuild = !$this->wouldBuild;
+                break;
+            default:
+                break;
+        }
+    }
+
     private function auth_check(): ?User
     {
+        if(!auth()->user()) {
+            $this->error = 'You must be logged in to vote!';
+            return null;
+        }
+
         $user = User::where('id', auth()->user()->id)->first();
 
         if (!$user) {
