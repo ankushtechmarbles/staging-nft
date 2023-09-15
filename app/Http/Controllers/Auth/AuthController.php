@@ -255,16 +255,18 @@ class AuthController extends Controller
     /**
      * Logout user
      * @param Request $request
-     * @return json
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function logout(Request $request)
     {
         try {
-            auth()->user()->tokens()->delete();
+//            auth()->user()->tokens()->delete();
 
-            return response()->json([
-                'message' => "Successfully Logged Out"
-            ], 200);
+            Auth::logout();
+//            return response()->json([
+//                'message' => "Successfully Logged Out"
+//            ], 200);
+            return redirect('/');
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
