@@ -83,13 +83,24 @@ Route::get('/course-multichoice-2', function () {
 });
 
 /* Login & Registrasion Route */
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false, 'verify' => true]);
 
-Auth::routes();
+Route::get('/auth/login', function () {
+//    return view('reactApp');
+    return view('/auth/login');
+})->name('auth');
+
+Route::post('/auth/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::post('/auth/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
+Route::post('/auth/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+
+Route::get('/auth/register', function () {
+    return view('/auth/register');
+//    return view('reactApp');
+})->name('register');
 
 // user
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-
 
 /*admin side*/
 Route::get('/admin/login', [App\Http\Controllers\admin\LoginController::class, 'showLoginForm'])->name('admin-login');
@@ -125,14 +136,6 @@ Route::get('/create', function () {
 });
 
 Route::get('/humanity', function () {
-    return view('reactApp');
-});
-
-Route::get('/auth/login', function () {
-    return view('reactApp');
-});
-
-Route::get('/auth/register', function () {
     return view('reactApp');
 });
 
