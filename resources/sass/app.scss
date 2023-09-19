@@ -60,35 +60,6 @@
         min-width: 25rem !important;
     }
 
-    div.member-avatar {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        img {
-            position: absolute;
-            left: 7px;
-            top: 7px;
-            max-height: 58px;
-            max-width: 58px;
-            border-radius: 50%;
-        }
-    }
-
-    h1.member-title {
-        margin: 0!important;
-        font-family: Inter, "serif";
-        font-size: 1em;
-    }
-
-    div.member-card {
-        @include white-card;
-        padding: 1rem;
-        width: 306px;
-        height: 104px;
-    }
-
     button.border-btn {
         @include white-card;
         padding-top: 1.5rem;
@@ -111,6 +82,48 @@
     input[type='range'] {
        accent-color: gold !important;
     }
+}
+
+div.member-avatar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        position: absolute;
+        left: 7px;
+        top: 7px;
+        max-height: 58px;
+        max-width: 58px;
+        border-radius: 50%;
+    }
+}
+
+div.member-avatar-square {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        max-height: 58px;
+        max-width: 58px;
+        border-radius: 15%;
+    }
+}
+
+h1.member-title {
+    margin: 0!important;
+    font-family: Inter, "serif";
+    font-size: 1em;
+}
+
+div.member-card {
+    @include white-card;
+    padding: 1rem;
+    min-width: 306px;
+    height: 104px;
 }
 
 .nft-info-section {
@@ -137,6 +150,53 @@
             }
         }
     }
+}
+
+.draft-edit-input {
+    border-color: black !important;
+}
+
+button.remove-btn {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    width: 2rem;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active {
+        opacity: 0.6;
+    }
+}
+
+button.add-member {
+    border-radius: 5px;
+    border: 0.5px solid #000;
+    background: #F0F0F0;
+    box-shadow: 1px 1px 0 0 #000;
+
+    width: 100%;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+button.submit {
+    border-radius: 5px;
+    border: 0.5px solid #000;
+    background: #F4B406;
+    box-shadow: 1px 1px 0 0 #000;
+    width: 100%;
+}
+
+button.cancel {
+    border-radius: 5px;
+    border: 0.5px solid #000;
+    background: #F0F0F0;
+    box-shadow: 1px 1px 0 0 #000;
+    width: 100%;
 }
 
 /* cards */
