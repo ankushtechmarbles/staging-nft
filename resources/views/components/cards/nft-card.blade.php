@@ -2,7 +2,7 @@
 
 <div class="card nft-card">
     @if(isset($owner) && $owner)
-        <a class="edit-nft btn-yellow" href="#"><i class="fa-solid fa-pen"></i></a>
+        <a wire:click="editDraft({{$id}})" class="edit-nft btn-yellow" href="#"><i class="fa-solid fa-pen"></i></a>
     @endif
     <img src="{{asset('image')}}/nft-card-image.jpeg" class="card-img-top" alt="nft-preview">
     <div class="card-body">
