@@ -21,6 +21,7 @@ class CreateSupportedBlockchainsTable extends Migration
             $table->boolean('fantom')->nullable();
             $table->boolean('arbitrum')->nullable();
             $table->boolean('optimism')->nullable();
+            $table->foreignId('project_id');
             $table->timestamps();
         });
     }

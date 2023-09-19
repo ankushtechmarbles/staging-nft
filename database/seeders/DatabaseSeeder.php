@@ -11,6 +11,7 @@ use App\Models\ProjectFeedBack;
 use App\Models\ProjectScore;
 use App\Models\ProjectTrack;
 use App\Models\ProjectType;
+use App\Models\SupportedBlockchains;
 use App\Models\User;
 use App\Models\UserProjectVotesTracker;
 use Illuminate\Database\Seeder;
@@ -30,6 +31,13 @@ class DatabaseSeeder extends Seeder
          ProjectTrack::factory(5)->create();
          ProjectType::factory(5)->create();
          Project::factory(10)->create()->each(function ($project) {
+                $project->blockchains()->save(SupportedBlockchains::factory()->make(
+                    [
+                        "project_id" => $project->id,
+                        "polygon" => true,
+                    ]
+                ));
+
                 $scores = $project->projectScores()->save(ProjectScore::factory()->make(
                     [
                         "project_id" => $project->id,

@@ -20,9 +20,6 @@ class ProjectFactory extends Factory
             'description' => $this->faker->sentence(),
             'problem' => $this->faker->sentence(),
             'solution' => $this->faker->sentence(),
-            'supported_blockchains_id' => SupportedBlockchains::create([
-                'polygon' => true,
-            ])->id,
             'supply' => $this->faker->numberBetween(1, 100),
             'unlockable_content' => $this->faker->boolean(),
             'discord' => $this->faker->url(),

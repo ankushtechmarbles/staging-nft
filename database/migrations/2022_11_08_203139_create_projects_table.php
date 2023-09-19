@@ -22,7 +22,7 @@ class CreateProjectsTable extends Migration
             $table->string('description');
             $table->string('problem');
             $table->string('solution');
-            $table->foreignIdFor(SupportedBlockchains::class);
+            $table->foreignIdFor(SupportedBlockchains::class)->nullable();
             $table->integer('supply')->nullable();
             $table->boolean('unlockable_content');
             $table->string('discord')->nullable();
