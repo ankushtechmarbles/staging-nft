@@ -15,6 +15,14 @@ sdk.getContract("0x247cebbf74CD0E62350538F1DE8333a3FC85Dbb7", 'edition-drop').th
     );
 });
 
+sdk.getContract("0xE09fEA852A6EDe7b202f2eE8f535A0921CC7D502", 'marketplace-v3').then(contract => {
+   window.MarketplaceContract = contract;
+   document.dispatchEvent(
+       new CustomEvent("marketplace-contract:init", {
+       })
+   )
+});
+
 window.ThirdWebSdk = sdk;
 window.MetaMask = new MetaMaskWallet({
     clientId: '44aa3ec3d8ffe49358a72c91c8e99e83'

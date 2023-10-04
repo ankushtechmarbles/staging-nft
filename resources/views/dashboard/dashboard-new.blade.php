@@ -63,7 +63,6 @@
             <nav class="hide-md-screen">
                 <div class="nav nav-tabs mb-0" id="nav-tab" role="tablist">
                     <a href="javascript_void(0)" class="nav-link px-3 active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#onward" type="button" role="tab" aria-controls="trending" aria-selected="true">Owned <span class="badge text-bg-warning">{{$owned_projects_count}}</span></a>
-                    <a href="javascript_void(0)" class="nav-link px-3" id="explore-tab" data-bs-toggle="tab" data-bs-target="#explore" type="button" role="tab" aria-controls="top-ideas" aria-selected="false">Explore</a>
                     <a href="javascript_void(0)" class="nav-link px-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#on-sale" type="button" role="tab" aria-controls="top-creators" aria-selected="false">On Sale <span class="badge text-bg-warning">{{$on_sale_projects_count}}</span></a>
                     <a href="javascript_void(0)" class="nav-link px-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#draft" type="button" role="tab" aria-controls="top-creators" aria-selected="false">Draft <span class="badge text-bg-warning">{{$draft_count}}</span></a>
                     <a href="javascript_void(0)" class="nav-link px-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#created" type="button" role="tab" aria-controls="top-creators" aria-selected="false">Created <span class="badge text-bg-warning">{{$total_projects_count}}</span></a>
@@ -291,12 +290,12 @@
         </div>
         <!-- Tab 1 end -->
 
-        <!-- Tab 2 (Explore) -->
+        <!-- Tab 2 (On Sale) -->
         <div class="tab-content bg-light mb-5" id="nav-tabContent">
-            <div class="tab-pane fade show size_chart" id="explore" role="tabpanel" aria-labelledby="explore-tab">
+            <div class="tab-pane fade show size_chart" id="on-sale" role="tabpanel" aria-labelledby="on-sale-tab">
                 <div class="container inner-element">
                     <div class="explore-utility">
-                        <div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
+                        <div class="row">
                             <livewire:explore-more />
                             <livewire:explore-more-projects />
                         </div>
@@ -305,22 +304,6 @@
             </div>
         </div>
         <!-- Tab 2 end -->
-        </div>
-
-        <!-- Tab 3 (On Sale) -->
-        <div class="tab-content bg-light mb-5" id="nav-tabContent">
-            <div class="tab-pane fade show size_chart mb-5" id="on-sale" role="tabpanel" aria-labelledby="on-sale-tab">
-                <div class="container inner-element">
-                    <div class="explore-utility">
-                        <div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
-                            <livewire:explore-more />
-                            <livewire:explore-more-projects />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Tab 3 end -->
 
         <!-- Tab 4 (Draft) -->
         <livewire:user-drafts :live_nfts="$live_nfts" :drafts="$drafts"/>
@@ -385,6 +368,70 @@
 
 @push('custom-scripts')
     <script>
+        {{--    Get all listings    --}}
+        document.addEventListener('marketplace-contract:init', async () => {
+
+            const address = localStorage.getItem('address');
+
+            let validDirectListings = [];
+            try {
+                validDirectListings = await window.MarketplaceContract.directListings.getAllValid(
+                    {
+                        seller: address, // Being sold by this address
+                        start: 0, // Start from this index (pagination)
+                    },
+                );
+            } catch (e) {
+            }
+
+
+            let validAuctionListings = [];
+            try {
+                 validAuctionListings = await window.MarketplaceContract.englishAuctions.getAllValid(
+                    {
+                        seller: address, // Being sold by this address
+                        start: 0, // Start from this index (pagination)
+                    }
+                );
+
+            } catch (e) {
+            }
+
+            const validListings = [...validDirectListings, ...validAuctionListings];
+
+            console.log(validListings)
+
+        });
+
+        // create listing
+       async function createDirectListing(tokenId, pricePerToken, assetContractAddress, startDate, endDate) {
+           try {
+               // get users wallet address
+               const address = localStorage.getItem('adderss');
+
+               const txResult = await window.MarketplaceContract.directListings.createListing({
+                   assetContractAddress: assetContractAddress, // Required - smart contract address of NFT to sell
+                   tokenId: tokenId, // Required - token ID of the NFT to sell
+                   pricePerToken: pricePerToken, // Required - price of each token in the listing
+                   startTimestamp: new Date(), // Optional - when the listing should start (default is now)
+                   endTimestamp: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Optional - when the listing should end (default is 7 days from now)
+               });
+
+           //     show success message
+                $('#toast-message').html('Listing created successfully.');
+                $("#liveToast").toast('show');
+           } catch (e) {
+           //     show error message
+                $('#toast-message').html('Listing creation failed.');
+                $("#liveToast").toast('show');
+           }
+       }
+
+       async function createAuctionListing() {
+
+       }
+
+
         Livewire.on('minted', async (nftData, supply) => {
             $('#toast-message').html('Minting completed. Setting up claim phase transaction.');
             $("#liveToast").toast('show');
@@ -412,6 +459,17 @@
         Livewire.on('mint_failed', () => {
             $('#toast-message').html(`Minting failed. Please try again later.`);
 
+            $("#liveToast").toast('show');
+        });
+
+        Livewire.on('projectUpdated', () => {
+            console.log('here')
+            $('#toast-message').html(`Draft Updated.`);
+            $("#liveToast").toast('show');
+        });
+
+        Livewire.on('error', (e) => {
+            $('#toast-message').html(e);
             $("#liveToast").toast('show');
         });
     </script>

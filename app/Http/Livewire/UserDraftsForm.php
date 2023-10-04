@@ -30,71 +30,97 @@ class UserDraftsForm extends Component
 
     public $photo;
 
-    public function render()
+    public function mount()
     {
-//        get project
+        //        get project
         $project = Project::find($this->project_id)::with('blockchains')->first();
 
-        if ($project) {
-            $members = json_decode($project->members)->members;
+        $members = json_decode($project->members)->members;
 
-            $members_array = [];
-            foreach ($members as $member) {
-                $members_array[] = $member;
-            }
-
-            $this->project = $project;
-            $this->project_name = $project->title;
-            $this->project_description = $project->description;
-            $this->project_image = $project->image;
-            $this->project_problem = $project->problem;
-            $this->project_solution = $project->solution;
-            $this->project_utilities = $project->utilities;
-            $this->project_members = $members_array;
-            $this->project_track = $project->project_track_id;
-            $this->project_chain = $project->supported_blockchains_id;
-            $this->project_supply = $project->supply;
-
-            return view('livewire.user-drafts-form', [
-                "project" => $project,
-                "project_name" => $project->name,
-                "project_description" => $project->description,
-                "project_image" => $project->image,
-                "project_problem" => $project->problem,
-                "project_solution" => $project->solution,
-                "project_utilities" => $project->utilities,
-                "project_members" => $members_array,
-                "project_track" => $project->track,
-                "project_chain" => $project->chain,
-                "project_supply" => $project->supply,
-            ]);
+        $members_array = [];
+        foreach ($members as $member) {
+            $members_array[] = $member;
         }
 
+        $this->project = $project;
+        $this->project_name = $project->title;
+        $this->project_description = $project->description;
+        $this->project_image = $project->image;
+        $this->project_problem = $project->problem;
+        $this->project_solution = $project->solution;
+        $this->project_utilities = $project->utilities;
+        $this->project_members = $members_array;
+        $this->project_track = $project->project_track_id;
+        $this->project_chain = $project->supported_blockchains_id;
+        $this->project_supply = $project->supply;
+    }
 
+    public function hydrate()
+    {
+        $project = Project::find($this->project_id)::with('blockchains')->first();
+
+        $members = json_decode($project->members)->members;
+
+        $members_array = [];
+        foreach ($members as $member) {
+            $members_array[] = $member;
+        }
+
+        $this->project_members = $members_array;
+
+    }
+
+    public function render()
+    {
+        $project = Project::find($this->project_id)::with('blockchains')->first();
+
+        $members = json_decode($project->members)->members;
+
+        $members_array = [];
+        foreach ($members as $member) {
+            $members_array[] = $member;
+        }
+
+        return view('livewire.user-drafts-form', [
+            "project" => $this->project,
+            "project_name" => $this->project_name,
+            "project_description" => $this->project_description,
+            "project_image" => $this->project_image,
+            "project_problem" => $this->project_problem,
+            "project_solution" => $this->project_solution,
+            "project_utilities" => $this->project_utilities,
+            "project_members" =>  $members_array,
+            "project_track" => $this->project_track,
+            "project_chain" => $this->project_chain,
+            "project_supply" => $this->project_supply,
+        ]);
     }
 
     public function submit($membersJSON)
     {
+        try {
+            //        update draft
+            $project = Project::find($this->project_id);
 
-//        update draft
-        $project = Project::find($this->project_id);
-
-        $project->title = $this->project_name;
-        $project->description = $this->project_description;
+            $project->title = $this->project_name;
+            $project->description = $this->project_description;
 //        $project->image = $this->project_image;
-        $project->problem = $this->project_problem;
-        $project->solution = $this->project_solution;
-        $project->utilities = $this->project_utilities;
-        $project->members = $membersJSON;
-        $project->project_track_id = $this->project_track;
-        $project->supported_blockchains_id = $this->project_chain;
-        $project->supply = $this->project_supply;
+            $project->problem = $this->project_problem;
+            $project->solution = $this->project_solution;
+            $project->utilities = $this->project_utilities;
+            $project->members = $membersJSON;
+            $project->project_track_id = $this->project_track;
+            $project->supported_blockchains_id = $this->project_chain;
+            $project->supply = $this->project_supply;
 
-        $project->save();
+            $project->save();
 
-        $this->is_editting = false;
+            $this->is_editting = false;
 
-        $this->emit('projectUpdated');
+            $this->emit('projectUpdated', ['sadasd', 'aksjdklaa']);
+        } catch (\Throwable $th) {
+            $this->emit('error', ['error', $th->getMessage()]);
+        }
     }
 
     public function cancel()

@@ -9,7 +9,7 @@
             </svg>
         </div>
         <input type="file" style="display: none" id="file-upload{{$index}}" />
-        <img id="memberAvatar{{$index}}" src="{{$member->image_url ? $member->image_url : "/image/user-image.png"}}" alt="" style="width: 100px; height: 100px; border-radius: 50%; ">
+        <img id="memberAvatar{{$index}}" src="{{isset($member->image_url) ? $member->image_url : "/image/user-image.png"}}" alt="" style="width: 100px; height: 100px; border-radius: 50%; ">
     </div>
     <div class="d-flex gap-2">
         <div>

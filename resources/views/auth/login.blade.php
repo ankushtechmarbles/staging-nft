@@ -24,6 +24,7 @@
                     @csrf
                     <div class="form-group">
                       <input id="email" type="email" class="form-control form-control-user mb-3 {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ __('*Enter your email') }}" required autofocus>
+                        <p>example@example.com</p>
 
                         @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
@@ -33,7 +34,8 @@
                     </div>
                     <div class="form-group">
                         <input id="password" type="password" class="form-control mb-3 form-control-user{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('*Enter your password') }}" required>
-                        @if ($errors->has('password'))
+                        <p>12345678</p>
+                    @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
