@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use GuzzleHttp\Exception\RequestException;
 use Livewire\Component;
+use Psr\Http\Message\ResponseInterface;
 
 class FilterMenu extends Component
 {
@@ -12,12 +14,7 @@ class FilterMenu extends Component
     public $filter_price = 'High-Low';
 
     public function mount() {
-        if(!isset($this->data)) {
-            // make request to web3 server on localhost to get all marketplace listings using guzzle
-            $client = new \GuzzleHttp\Client();
-            $response = $client->request('GET', 'http://localhost:3000/web3/marketplace/listings');
-            $this->data = json_decode($response->getBody()->getContents())->data;
-        }
+
     }
 
     public function render()
@@ -40,6 +37,21 @@ class FilterMenu extends Component
 //                return $a->price > $b->price;
 //            });
 //        }
+
+        if(!isset($this->data)) {
+            // make request to web3 server on localhost to get all marketplace listings using guzzle
+            $client = new \GuzzleHttp\Client();
+            $promise = $client->getAsync('http://localhost:3000/web3/marketplace/listings');
+
+            $promise->then(
+                function(ResponseInterface $response) {
+                    $this->data = json_decode($response->getBody()->getContents())->data;
+                },
+                function(RequestException $exception) {
+                    print_r($exception->getMessage());
+                }
+            );
+        }
 
         return view('livewire.filter-menu');
     }

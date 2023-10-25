@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="live-indicator-wrapper">
-                <span class="indicator-before text-dark">Live </span><span> {{count($data)}} </span>Results
+                <span class="indicator-before text-dark">Live </span><span> {{isset($data) ? count($data) : ""}} </span>Results
             </div>
         </div>
         <div class="col-9">

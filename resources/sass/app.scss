@@ -1,6 +1,9 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+
 
 // Variables
 @import 'variables';
@@ -283,6 +286,307 @@ input.footer-subscribe-input {
     background: #FFF;
     box-shadow: 2px 2px 0px 0px #000;
 }
+
+// auth
+.auth-header {
+    height: 4rem;
+    border-bottom: 2px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+.auth-container {
+    height: 93.5vh;
+    background: url('/image/auth-background.png') no-repeat center;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 40px rgba(48, 115, 218, 0.75);
+        padding: 2rem 5rem 2rem 5rem;
+        text-align: center;
+        font-family: 'Exo 2', sans-serif;
+
+        h1 {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        h6 {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 400;
+        }
+
+        h5 {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 400;
+        }
+
+        .bold {
+            font-weight: 600;
+        }
+
+        .width-md {
+            width: 60%;
+            text-align: center;
+            text-transform: none;
+        }
+    }
+
+    div.avatar-icon {
+        background: #517CBE;
+        border-radius: 50%;
+        width: 8rem;
+        height: 8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form.register-form {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        box-shadow: none;
+
+        input[type=text] {
+            box-shadow: 0 5px 40px rgba(48, 115, 218, 0.75);
+            padding: 1rem 1rem 1rem 1rem;
+            width: 40rem;
+            border: none;
+            font-size: 30px;
+        }
+
+        input[type=radio] {
+            border: none;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        input[type="radio"]:checked+label {
+            color: rgba(48, 115, 218, 0.75);
+        }
+    }
+}
+
+div#step-3 {
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+            background: white;
+            box-shadow: 0 5px 40px rgba(48, 115, 218, 0.75);
+            width: 40rem;
+            padding: 2rem 1rem 2rem 1rem;
+            border-radius: 10px;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.8;
+            }
+
+            label {
+                font-size: 18px;
+            }
+        }
+    }
+
+}
+
+div.photo-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+
+    button {
+        background: white;
+        color: #517CBE;
+        border: 1px solid #517CBE;
+        border-radius: 10px;
+        text-align: center;
+        width: 60%;
+        padding: 2rem 0 2rem 0;
+    }
+
+    div {
+        display: flex;
+        width: 120px;
+    }
+
+    button.file-input {
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 0;
+        text-decoration: underline;
+    }
+}
+
+div#step-5 {
+    height: 100%;
+    width: 100%;
+    iframe {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.auth-btn-group {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 2rem;
+    width: 100%;
+
+    button.auth-btn {
+        width: 100%;
+        border: 1px solid #A7A7A7;
+        background: white;
+        padding: 1rem 2rem 1rem 2rem;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            flex: 1;
+        }
+    }
+}
+
+button.btn-more {
+    background: transparent;
+    border: none;
+    margin-top: 2rem;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+main.register-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: #333;
+
+        text-align: center;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 41px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+}
+
+footer.register-footer {
+    width:100%;
+    background: #fff;
+}
+
+.footer-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    button.back-btn {
+        border-radius: 5px;
+        border: 0.5px solid #000;
+        background: #E7E7E7;
+        box-shadow: 2px 2px 0px 0px #000;
+        width: 88px;
+        height: 39px;
+
+        font-family: 'Exo 2', sans-serif;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &:active {
+            opacity: 0.6;
+        }
+    }
+
+    button.next-btn {
+        border-radius: 5px;
+        border: 0.5px solid #000;
+        background: #517CBE;
+        box-shadow: 2px 2px 0px 0px #000;
+        width: 113px;
+        height: 39px;
+
+        color: #FFF;
+        text-align: center;
+        font-family: 'Exo 2', sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &:active {
+            opacity: 0.6;
+        }
+    }
+
+    button.skip-btn {
+        border: none;
+        font-family: 'Exo 2', sans-serif;
+        background: transparent;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &:active {
+            opacity: 0.6;
+        }
+    }
+}
+
+.progress-bar.register-bar {
+    background-color: transparent;
+}
+
+.register-bar {
+    background: linear-gradient(270deg, #0009E3 -4.38%, rgba(0, 89, 227, 0.79) 17.36%, rgba(0, 89, 227, 0.00) 100%);
+}
+
 
 /* cards */
 .icon-card {

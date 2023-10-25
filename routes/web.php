@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Livewire\CourseStudyController;
@@ -87,7 +88,7 @@ Auth::routes(['register' => false, 'verify' => true]);
 
 Route::get('/auth/login', function () {
 //    return view('reactApp');
-    return view('/auth/login');
+    return view('/auth/login-v2');
 })->name('auth');
 
 Route::post('/auth/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
@@ -95,9 +96,15 @@ Route::post('/auth/logout', [App\Http\Controllers\Auth\AuthController::class, 'l
 Route::post('/auth/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
 Route::get('/auth/register', function () {
-    return view('/auth/register');
+    return view('/auth/register-v2');
 //    return view('reactApp');
 })->name('register');
+
+
+// Socialite
+Route::get('login/{provider}', [SocialController::class, 'redirect']);
+Route::get('login/{provider}/callback',[SocialController::class, 'callback']);
+
 
 // user
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');

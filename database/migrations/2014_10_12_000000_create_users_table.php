@@ -13,12 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {            
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('phone')->nullable();
             $table->string('role',10)->default('member');
             $table->text('user_accesses')->nullable();
@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('pincode',10)->nullable();
-            $table->string('api_token',100)->nullable();   
+            $table->string('api_token',100)->nullable();
             $table->unsignedTinyInteger('total_buy_models')->default(1);
             $table->rememberToken();
             $table->timestamps();
