@@ -1,0 +1,114 @@
+header.lean-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    font-family: 'Exo 2', sans-serif;
+}
+
+main.lean-main {
+    margin: 2rem;
+    display: grid;
+    border: 2px solid black;
+    grid-template-areas:
+                "problem    solution    value       advantage   customer     iframe iframe"
+                "problem    solution    value       advantage   customer     iframe iframe"
+                "problem    metrics     value       channels    customer     iframe iframe"
+                "structure  structure   structure   streams     streams      iframe iframe";
+
+    .frame {
+        grid-area: iframe;
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
+    }
+
+    section {
+        border: 1px solid #000;
+        max-width: 500px;
+
+        .problem {
+            grid-area: problem;
+        }
+
+        .solution {
+            grid-area: solution;
+        }
+
+        .value {
+            grid-area: value;
+        }
+
+        .advantage {
+            grid-area: advantage;
+        }
+
+        .customer {
+            grid-area: customer;
+        }
+
+        .metrics {
+            grid-area: metrics;
+        }
+
+        .channels {
+            grid-area: channels;
+        }
+
+        .structure {
+            grid-area: structure;
+        }
+
+        .streams {
+            grid-area: streams;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            width: 100%;
+            padding: 0 1rem 0 1rem;
+            font-family: 'Exo 2', sans-serif !important;
+            font-size: 1.75em;
+        }
+
+        textarea {
+            font-size: 14px;
+            width: 98%;
+            min-height: 100px;
+            border: none;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        ul {
+            padding-inline-start: 0;
+            padding: 0 2rem 0 2rem;
+
+            li {
+                text-decoration: none;
+                list-style-type: none;
+            }
+        }
+    }
+
+}
+
+div.chat-box {
+    position: absolute;
+}
+
+footer.lean-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    font-family: 'Exo 2', sans-serif;
+
+    h1 {
+        font-size: 3em;
+        letter-spacing: 3px;
+    }
+}
