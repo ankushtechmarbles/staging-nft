@@ -7,8 +7,9 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-json": "*",
+        "barryvdh/laravel-dompdf": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.5",
         "intervention/image": "^2.5",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^8.75",
@@ -18,6 +19,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.12",
+        "openai-php/client": "^0.4.1",
         "paypal/rest-api-sdk-php": "^1.14",
         "pragmarx/google2fa-laravel": "^2.0",
         "simplesoftwareio/simple-qrcode": "^4.1",
@@ -69,7 +71,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

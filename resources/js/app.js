@@ -1,6 +1,9 @@
 require('./bootstrap');
 const thirdweb = require('@thirdweb-dev/sdk');
 const { MetaMaskWallet, PaperWallet } = require("@thirdweb-dev/wallets");
+const html2canvas = require('html2canvas');
+
+window.html2canvas = html2canvas;
 
 window.thirdweb = thirdweb;
 const sdk = new window.thirdweb.ThirdwebSDK("mumbai", {

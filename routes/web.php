@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\AiGenerationController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeanCanvasController;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SocialController;
@@ -28,7 +34,17 @@ Route::get('cc', function () {
     dd("All cache cleared successfully.");
 });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/canvas', [LeanCanvasController::class, 'index']);
+
+Route::get('/helix/', function() {
+   return view ('helix.index');
+});
+
+Route::get('/helix/configurator', function() {
+   return view ('helix.index');
+});
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/painter', function() {
    return view ('reactPainterDemo');
@@ -91,9 +107,9 @@ Route::get('/auth/login', function () {
     return view('/auth/login-v2');
 })->name('auth');
 
-Route::post('/auth/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
-Route::post('/auth/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
-Route::post('/auth/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+Route::post('/auth/login', [LoginController::class, 'login'])->name('login');
+Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/auth/register', [RegisterController::class, 'register'])->name('register');
 
 Route::get('/auth/register', function () {
     return view('/auth/register-v2');
@@ -110,7 +126,7 @@ Route::get('login/{provider}/callback',[SocialController::class, 'callback']);
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
 /*admin side*/
-Route::get('/admin/login', [App\Http\Controllers\admin\LoginController::class, 'showLoginForm'])->name('admin-login');
+Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('admin-login');
 
 Route::get('/admin', function () {
     if (auth()->check()) {

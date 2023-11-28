@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AiGenerationController;
+use App\Http\Controllers\LeanCanvasController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UnityController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -23,6 +25,20 @@ use App\Http\Controllers\ProjectScoreController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/chatgpt/{type}', [AiGenerationController::class, 'generateQuestionResponse']);
+Route::post('/canvas/mint', [LeanCanvasController::class, 'mint']);
+
+// configurator links
+Route::get('/helix/vehicles', [VehicleController::class, 'index']);
+Route::get('/helix/vehicles/{id}', [VehicleController::class, 'show']);
+Route::get('/helix/configurator/{id}', [VehicleController::class, 'configurator']);
+Route::post('/helix/configurator', [VehicleController::class, 'store']);
+
+// Humanity Rocks Links
+Route::get('/humanityrocks/vehicles', [VehicleController::class, 'indexHumanityRocks']);
+Route::get('/humanityrocks/vehicles/{id}', [VehicleController::class, 'showHumanityRocks']);
+Route::post('/humanityrocks/vehicles', [VehicleController::class, 'storeHumanityRocks']);
 
 // Auth routes
 // Route::post("/paper/login", [AuthController::class, 'loginWithPaper']);

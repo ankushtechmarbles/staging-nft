@@ -2,6 +2,100 @@
 @import url(https://fonts.googleapis.com/css?family=Inter);
 @import url(https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;800&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap);
+header.lean-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+  font-family: "Exo 2", sans-serif;
+}
+
+main.lean-main {
+  margin: 2rem;
+  display: grid;
+  border: 2px solid black;
+  grid-template-areas: "problem    solution    value       advantage   customer     iframe iframe" "problem    solution    value       advantage   customer     iframe iframe" "problem    metrics     value       channels    customer     iframe iframe" "structure  structure   structure   streams     streams      iframe iframe";
+}
+main.lean-main .frame {
+  grid-area: iframe;
+  border: none;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+main.lean-main section {
+  border: 1px solid #000;
+  max-width: 500px;
+}
+main.lean-main section .problem {
+  grid-area: problem;
+}
+main.lean-main section .solution {
+  grid-area: solution;
+}
+main.lean-main section .value {
+  grid-area: value;
+}
+main.lean-main section .advantage {
+  grid-area: advantage;
+}
+main.lean-main section .customer {
+  grid-area: customer;
+}
+main.lean-main section .metrics {
+  grid-area: metrics;
+}
+main.lean-main section .channels {
+  grid-area: channels;
+}
+main.lean-main section .structure {
+  grid-area: structure;
+}
+main.lean-main section .streams {
+  grid-area: streams;
+}
+main.lean-main section h1 {
+  text-transform: uppercase;
+  width: 100%;
+  padding: 0 1rem 0 1rem;
+  font-family: "Exo 2", sans-serif !important;
+  font-size: 1.75em;
+}
+main.lean-main section textarea {
+  font-size: 14px;
+  width: 98%;
+  min-height: 100px;
+  border: none;
+  resize: none;
+}
+main.lean-main section textarea:focus {
+  outline: none;
+}
+main.lean-main section ul {
+  padding-inline-start: 0;
+  padding: 0 2rem 0 2rem;
+}
+main.lean-main section ul li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+div.chat-box {
+  position: absolute;
+}
+
+footer.lean-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+  font-family: "Exo 2", sans-serif;
+}
+footer.lean-footer h1 {
+  font-size: 3em;
+  letter-spacing: 3px;
+}
+
 .nft-details .nft-details-btn {
   padding: 2rem;
   box-shadow: 2px 2px 0 0 #000;

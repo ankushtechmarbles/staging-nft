@@ -30,9 +30,9 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-			<li class="nav-item px-3"><a class="nav-link active" aria-current="page" href="{{url('about')}}">About</a></li>			
+			<li class="nav-item px-3"><a class="nav-link active" aria-current="page" href="{{url('about')}}">About</a></li>
 			<li class="nav-item dropdown px-3"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Courses</a>
-				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">      
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 			      <li><a class="dropdown-item" href="{{url('leaderboard')}}">Leaderboard</a></li>
 			      <li><a class="dropdown-item" href="{{url('showcase')}}">Showcase</a></li>
 				</ul>
@@ -46,20 +46,20 @@
 			</li>
 			<li class="nav-item px-3">
            		<a class="nav-link" href="https://idea.thecela.com/creator/" target="_blank">Create</a>
-			</li>	
+			</li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('contact')}}">Contact</a>
-                </li>		
+                </li>
 			</ul>
 
-			<div class="d-flex nav_right_tems">				
+			<div class="d-flex nav_right_tems">
 				<div class="form-check form-switch">
 				<input class="form-check-input toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault">
 				<label class="form-check-label" for="flexSwitchCheckDefault"></label>
 				</div>
 				<a class="px-2" href=""><img src="{{ asset('home/images/discord.png')}}"></a>
 				<a class="px-2" href=""><img src="{{ asset('home/images/user.png')}}"></a>
-				<a class="px-2 connect_wallet" href=""><img src="{{ asset('home/images/connect_wallet.png')}}"></a>			
+				<a class="px-2 connect_wallet" href=""><img src="{{ asset('home/images/connect_wallet.png')}}"></a>
 			</div>
 
 		</div>
@@ -69,7 +69,7 @@
 <div class="banner">
 	<div class="container">
 	<div class="row">
-		<div class="col-md-6">			
+		<div class="col-md-6">
 			<h1>Create &amp; Contribute <br/> to IDEAs through <br/> 3D NFTs.</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.</p>
 			<a href="" class="banner_btn b1">Create Project</a>
@@ -77,8 +77,8 @@
 			<span class="b_i_1"><img src="{{ asset('home/images/b_i_1.png')}}" class="scaling_animation"></span>
 			<span class="b_i_2"><img src="{{ asset('home/images/b_i_2.png')}}" class=""></span>
 			<span class="b_i_3"><img src="{{ asset('home/images/b_i_3.png')}}" class="floating_animation"></span>
-		</div>		
-		<div class="col-md-6">			
+		</div>
+		<div class="col-md-6">
 			<div style="position: relative;">
 				<div class="boxy">
 					<div class="boxy_img">
@@ -89,7 +89,7 @@
 					</div>
 					<span class="boxy_txt_1">Helix Auto</span>
 					<span class="boxy_txt_2">1.4K Owners</span>
-				</div>			
+				</div>
 				<div class="boxy2">
 					<!-- Use image dimensions of 210px width and 158px height -->
 					<img src="{{ asset('home/images/zebra.jpg')}}" class="img-fluid">
@@ -179,7 +179,7 @@
 				<div class="leaderboard_title"><h4>Current Leaderboard</h4></div>
 
 				<div class="results_table">
-					<table style="width:100%">					
+					<table style="width:100%">
 					<tr>
 						<td><span class="ideas_img"><img src="{{ asset('home/images/idea_icon.png')}}"></span> Humanity Rocks</td>
 						<td>Charity, Gaming</td>
@@ -195,7 +195,7 @@
 					</table>
 				</div>
 				<div class="results_table">
-					<table style="width:100%">					
+					<table style="width:100%">
 					<tr>
 						<td><span class="ideas_img"><img src="{{ asset('home/images/idea_icon.png')}}"></span> Humanity Rocks</td>
 						<td>Charity, Gaming</td>
@@ -211,7 +211,7 @@
 					</table>
 				</div>
 				<div class="results_table">
-					<table style="width:100%">					
+					<table style="width:100%">
 					<tr>
 						<td><span class="ideas_img"><img src="{{ asset('home/images/idea_icon.png')}}"></span> Humanity Rocks</td>
 						<td>Charity, Gaming</td>

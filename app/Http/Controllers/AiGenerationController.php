@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use OpenAI;
 use function PHPUnit\Framework\throwException;
 
 class AiGenerationController extends Controller
@@ -57,6 +58,49 @@ class AiGenerationController extends Controller
                 "message" => "Success",
                 "photo" => $responseBody,
             ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    function generateQuestionResponse(Request $request): JsonResponse
+    {
+        try {
+            // get type from request
+            $type = $request->type;
+            // get question from request
+            $question = $request->question;
+
+            $yourApiKey = getenv('OPENAI_API_KEY');
+            $client = OpenAI::client($yourApiKey);
+
+            $setupQuestion = '';
+
+            switch ($type) {
+                case "problem":
+                    $setupQuestion = "I have a problem with my computer.";
+                    break;
+                default:
+                    break;
+            }
+
+            $response = $client->chat()->create([
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+
+                    ['role' => 'user', 'content' => $question],
+                ],
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'answer' => $response->choices[0]->message->content
+            ]);
+
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,

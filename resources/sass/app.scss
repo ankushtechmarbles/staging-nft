@@ -8,6 +8,9 @@
 // Variables
 @import 'variables';
 
+// Modules
+@import 'lean-canvas';
+
 // mixins
 @mixin common-font-styles {
     font-family: Inter, 'serif';
