@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>@yield('title','') | {{ config('app.name') }}</title>
 
@@ -45,12 +45,12 @@
     <!-- Vendor Styles -->
     <link rel="stylesheet" media="screen" href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}"/>
     <link rel="stylesheet" media="screen" href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link rel="stylesheet" media="screen" href="{{ asset('assets/css/leaderboard.css') }}">
-      <link rel="stylesheet" media="screen" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" media="screen" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" media="screen" href="{{ asset('assets/css/leaderboard.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ asset('css/app.css') }}">
     @stack('vendor-css')
 
     <!-- Main Theme Styles + Bootstrap -->
@@ -59,61 +59,61 @@
 
     <!-- Theme mode -->
     <script>
-      let mode = window.localStorage.getItem('mode'),
-          root = document.getElementsByTagName('html')[0];
-      window.process = { browser: true, env: { ENVIRONMENT: 'BROWSER' } };
-      if (mode !== null && mode === 'dark') {
-        root.classList.add('dark-mode');
-      } else {
-        root.classList.remove('dark-mode');
-      }
+        let mode = window.localStorage.getItem('mode'),
+            root = document.getElementsByTagName('html')[0];
+        window.process = { browser: true, env: { ENVIRONMENT: 'BROWSER' } };
+        if (mode !== null && mode === 'dark') {
+            root.classList.add('dark-mode');
+        } else {
+            root.classList.remove('dark-mode');
+        }
     </script>
-  </head>
-  <!-- Body -->
-  <body class="@yield('body-class','')" id="app">
-    <main class="page-wrapper">
-      <!-- Navbar -->
-      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
-      @include('layouts.partials.header')
+</head>
+<!-- Body -->
+<body class="@yield('body-class','')" id="app">
+<main class="page-wrapper">
+    <!-- Navbar -->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+    @include('layouts.partials.header')
 
 
-      @yield('content')
+    @yield('content')
 
-    </main>
+</main>
 
 
-    <!-- Footer -->
-    @include('layouts.partials.footer')
-        <!-- Back to top button -->
-    <a href="#top" class="btn-scroll-top" data-scroll>
-      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
-    </a>
+<!-- Footer -->
+@include('layouts.partials.footer')
+<!-- Back to top button -->
+<a href="#top" class="btn-scroll-top" data-scroll>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+</a>
 
-    {{-- toast messages --}}
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">IDEA-NFT</strong>
-                <small>Just now</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" id="toast-message">
-                Hello, world! This is a toast message.
-            </div>
+{{-- toast messages --}}
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">IDEA-NFT</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toast-message">
+            Hello, world! This is a toast message.
         </div>
     </div>
+</div>
 
-    @livewireScripts
-    <!-- Vendor Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{asset('assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-    @stack('js-plugin')
-    <!-- Main Theme Script -->
-    <script src="{{asset('assets/js/theme.min.js')}}"></script>
-    <script src="{{ mix('js/app.js') }}"></script>
-    @stack('custom-scripts')
-    @yield('javascript');
-  </body>
+@livewireScripts
+<!-- Vendor Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{asset('assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}"></script>
+<script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+@stack('js-plugin')
+<!-- Main Theme Script -->
+<script src="{{asset('assets/js/theme.min.js')}}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
+@stack('custom-scripts')
+@yield('javascript');
+</body>
 </html>
