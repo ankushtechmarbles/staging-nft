@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 //use App\Http\Livewire\CourseStudyController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseStudyController;
+use Illuminate\Foundation\Application;
+use Inertia\Inertia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,8 +35,6 @@ Route::get('cc', function () {
     \Artisan::call('view:clear');
     dd("All cache cleared successfully.");
 });
-
-Route::get('/canvas', [LeanCanvasController::class, 'index']);
 
 Route::get('/helix/', function() {
    return view ('helix.index');
@@ -165,3 +165,9 @@ Route::get('/humanity', function () {
 Route::get('/profile', function () {
     return view('reactApp');
 });
+
+
+Route::get('/canvas', [LeanCanvasController::class, 'index']);
+
+// React onboarding
+Route::view('/react/{path?}', 'app')->where('path', '.*');

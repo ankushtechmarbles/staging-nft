@@ -18,7 +18,6 @@ main.lean-main {
 }
 main.lean-main .frame {
   grid-area: iframe;
-  border: none;
   width: 100%;
   height: 100%;
   border: 1px solid black;

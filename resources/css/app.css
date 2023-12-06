@@ -1,0 +1,92 @@
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+input[type=checkbox]:focus {
+    outline: 0;
+}
+
+.toggle {
+    height: 42px;
+    width: 86px;
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    border: 5px solid #58595B;
+    background: #FFFFFF;
+    box-shadow: inset 2.70701px 2.70701px 13.535px rgba(0, 0, 0, 0.2), inset 0.270701px 0.270701px 0.947452px rgba(215, 215, 215, 0.2);
+    transition: all 0.2s ease;
+}
+
+.toggle:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 15px;
+    position: relative;
+    text-align: right;
+    font-size: .4em;
+    font-family: poppins, serif;
+    color: #58595B;
+    font-weight: bold;
+    letter-spacing: 0.425em;
+    content: "LIGHT"
+}
+
+.toggle:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 1.6242px 1.6242px 5.14331px rgba(0, 0, 0, 0.2), inset 2.70701px 2.70701px 3.65446px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+}
+.toggle:checked:after {
+    content: '';
+    color: white;
+    background: #232323;
+    top: 2px;
+    left: 2px;
+}
+
+.toggle:checked:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: -10px;
+    position: relative;
+    text-align: right;
+    font-size: .4em;
+    font-family: poppins, serif;
+    font-weight: bold;
+    letter-spacing: 0.425em;
+    color: white;
+    content: "DARK"
+}
+
+
+.toggle:checked {
+    border-width: 8px;
+    background: #58595B;
+    box-shadow: inset 2.67516px 2.67516px 13.3758px #000000, inset 0.267516px 0.267516px 0.936306px rgba(215, 215, 215, 0.52);
+}
+
+.toggle:checked:after {
+    transform: translatex(42px);
+}
+
+.webcam > video {
+    border-radius: 361px;
+}

@@ -69,7 +69,8 @@ class VehicleController extends Controller
                 "wheelLight" => $request->wheelLight,
                 "rimType" => $request->rimType,
                 "wheelSize" => $request->wheelSize,
-                "attributes" => $request->attributesJSON
+                "attributes" => $request->attributesJSON,
+                "weapons" => $request->weapons
             ]);
 
             return response($vehicle, 201);
@@ -81,12 +82,7 @@ class VehicleController extends Controller
             "rimType" => $request->rimType,
             "wheelSize" => $request->wheelSize,
             "attributes" => $request->attributesJSON,
-            "weapons" => json_encode([
-                [
-                    "type" => "roof",
-                    "name" => "weapon2"
-                ]
-            ])
+            "weapons" => $request->weapons
         ];
 
         // update vehicle
