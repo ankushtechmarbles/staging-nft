@@ -15,6 +15,7 @@ use App\Models\SupportedBlockchains;
 use App\Models\User;
 use App\Models\UserProjectVotesTracker;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {

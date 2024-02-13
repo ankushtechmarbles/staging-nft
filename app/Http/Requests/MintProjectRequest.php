@@ -7,16 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class MintProjectRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -24,7 +14,10 @@ class MintProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            "project_id"
+            "name"  => "required|string",
+            "address" => "required|string",
+            "image_url" => "required|string",
+            "animation_url" => "required|string",
         ];
     }
 }

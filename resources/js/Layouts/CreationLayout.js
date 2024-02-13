@@ -6,17 +6,18 @@ import Header from "./Partials/Header";
 const CreationLayout = ({ children }) => {
     return (
         <Grid
+            userSelect={"none"}
+            overflow={"hidden"}
             templateAreas={`
             "header"
             "main"
             "footer"
             `}
             h={"100vh"}
-            w={"100vw"}
             gridTemplateRows={"0.25fr 1.5fr 0.25fr"}
-            backgroundImage={"/image/auth_background.png"}
+            backgroundImage={"/image/hdr/background-image.jpg"}
         >
-            <GridItem area={"header"}>
+            <GridItem area={"header"} zIndex={20}>
                 <Header />
             </GridItem>
             <GridItem

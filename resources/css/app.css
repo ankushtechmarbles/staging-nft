@@ -10,16 +10,16 @@ input[type=checkbox]:focus {
 }
 
 .toggle {
-    height: 42px;
-    width: 86px;
+    height: 32px;
+    width: 108px;
     border-radius: 20px;
     display: inline-block;
     position: relative;
     margin: 0;
-    border: 5px solid #58595B;
     background: #FFFFFF;
-    box-shadow: inset 2.70701px 2.70701px 13.535px rgba(0, 0, 0, 0.2), inset 0.270701px 0.270701px 0.947452px rgba(215, 215, 215, 0.2);
+    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.30);
     transition: all 0.2s ease;
+    font-family: Barlow, serif;
 }
 
 .toggle:before {
@@ -29,14 +29,14 @@ input[type=checkbox]:focus {
     width: 100%;
     height: 100%;
     left: 15px;
+    top: -1px;
     position: relative;
     text-align: right;
-    font-size: .4em;
-    font-family: poppins, serif;
-    color: #58595B;
-    font-weight: bold;
-    letter-spacing: 0.425em;
-    content: "LIGHT"
+    font-size: 12px;
+    font-family: Barlow, serif;
+    color: black;
+    font-weight: normal;
+    content: "LIGHT MODE"
 }
 
 .toggle:after {
@@ -48,15 +48,20 @@ input[type=checkbox]:focus {
     height: 24px;
     border-radius: 50%;
     background: #FFFFFF;
-    box-shadow: 1.6242px 1.6242px 5.14331px rgba(0, 0, 0, 0.2), inset 2.70701px 2.70701px 3.65446px rgba(0, 0, 0, 0.2);
+    background-image: url("/image/icons/idealabs-hud-topRight-colorthemeMode-light-icon-00.svg");
+    background-repeat: no-repeat;
+    background-position: center;
     transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
 }
 .toggle:checked:after {
     content: '';
     color: white;
     background: #232323;
-    top: 2px;
-    left: 2px;
+    top: 4px;
+    left: 38px;
+    background-image: url("/image/icons/idealabs-hud-topRight-colorthemeMode-dark-icon-00.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .toggle:checked:before {
@@ -66,21 +71,20 @@ input[type=checkbox]:focus {
     width: 100%;
     height: 100%;
     left: -10px;
+    top: -1px;
     position: relative;
     text-align: right;
-    font-size: .4em;
-    font-family: poppins, serif;
-    font-weight: bold;
-    letter-spacing: 0.425em;
-    color: white;
-    content: "DARK"
+    font-size: 12px;
+    font-family: Barlow, serif;
+    font-weight: normal;
+    color: black;
+    content: "DARK MODE"
 }
 
 
 .toggle:checked {
-    border-width: 8px;
-    background: #58595B;
-    box-shadow: inset 2.67516px 2.67516px 13.3758px #000000, inset 0.267516px 0.267516px 0.936306px rgba(215, 215, 215, 0.52);
+    background: #BBB;
+    color: black;
 }
 
 .toggle:checked:after {
@@ -89,4 +93,109 @@ input[type=checkbox]:focus {
 
 .webcam > video {
     border-radius: 361px;
+}
+
+.link-react {
+    color: #C1C1C1;
+    text-decoration: underline;
+    text-align: center;
+    font-family: Barlow;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.form-control {
+    height: 52px !important;
+    border-radius: 10px !important;
+    border: 2px solid #565656 !important;
+    opacity: 0.69 !important;
+    background: #626262 !important;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: #C8C8C8 !important;
+}
+
+.form-control-select {
+    height: 52px !important;
+    flex-shrink: 0 !important;
+    width: 100%;
+    border-radius: 10px !important;
+    border: 2px solid #565656 !important;
+    opacity: 0.78 !important;
+    background: #626262 !important;
+    color: #C8C8C8 !important;
+}
+
+.form-control-select::placeholder {
+    color: #C8C8C8 !important;
+}
+
+.form-control:focus {
+    border: 2px solid #575757 !important;
+    opacity: 0.88 !important;
+    background: linear-gradient(180deg, #121111 0%, rgba(18, 17, 17, 0.00) 161.54%) !important;
+}
+
+.avatar-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    transition: all 0.5s ease;
+    pointer-events: all;
+    cursor: grab;
+}
+
+.avatar-canvas:active {
+    cursor: grabbing;
+}
+
+
+/* create rotation class */
+.rotate-clockwise {
+    -webkit-animation: rotate 2s linear infinite;
+    -moz-animation: rotate 2s linear infinite;
+    -ms-animation: rotate 2s linear infinite;
+    -o-animation: rotate 2s linear infinite;
+    animation: rotate 2s linear infinite;
+
+    transform-origin: center center;
+}
+
+/* create keyframes for rotation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.rotate-counter-clockwise {
+    /*start flipped*/
+    transform: translate(-50%, -50%) rotate(180deg);
+    position: absolute;
+    top: 0;
+    -webkit-animation: rotate-counter-clockwise 1.5s linear infinite reverse;
+    -moz-animation: rotate-counter-clockwise 1.5s linear infinite reverse;
+    -ms-animation: rotate-counter-clockwise 1.5s linear infinite reverse;
+    -o-animation: rotate-counter-clockwise 1.5s linear infinite reverse;
+    animation: rotate-counter-clockwise 1.5s linear infinite reverse;
+
+    transform-origin: center center;
+}
+
+/* create keyframes for rotation */
+@keyframes rotate-counter-clockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
 }

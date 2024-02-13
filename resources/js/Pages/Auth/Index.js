@@ -5,13 +5,11 @@ import WelcomePanel from "./Partials/WelcomePanel";
 
 const Index = () => {
     return (
-        <Grid
-            templateColumns={"repeat(2, 1fr)"}
-            gap={6}
-            backgroundImage={"/image/auth_background.png"}
-        >
-            <GridItem>{/*<RpmAvatar />*/}</GridItem>
+        <Grid templateColumns={"repeat(2, 1fr)"} gap={6}>
             <GridItem>
+                <RpmAvatar />
+            </GridItem>
+            <GridItem zIndex={20}>
                 <WelcomePanel />
             </GridItem>
         </Grid>

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AiGenerationController;
+use App\Http\Controllers\ChatgptAssistant;
 use App\Http\Controllers\LeanCanvasController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\UnityController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
@@ -27,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/chatgpt/{type}', [AiGenerationController::class, 'generateQuestionResponse']);
+Route::post('/assistant', [ChatgptAssistant::class, 'askQuestion']);
 Route::post('/canvas/mint', [LeanCanvasController::class, 'mint']);
 
 // configurator links
@@ -45,14 +48,26 @@ Route::post('/humanityrocks/vehicles', [VehicleController::class, 'storeHumanity
 Route::post("/login", [AuthController::class, 'loginUser']);
 Route::post("/register", [AuthController::class, 'register']);
 
+// reset password
+Route::post('/password/email', [AuthController::class, 'forgotPassword']);
+
+// Socialite routes
+Route::get('/auth/{provider}/callback', [SocialController::class, 'Callback'])
+    ->name('auth.callback');
+
+// third web routes
+Route::post('/auth/login', [SocialController::class, 'loginWithMetamask']);
+Route::post('/auth/payload', [SocialController::class, 'metamaskPayload']);
+Route::get('/auth/user', [SocialController::class, 'getMetamask']);
+
 // Mint painter
 Route::post("/mintNft", [MintedNftsController::class, 'signature']);
 
 // Text to Image Routes
 Route::post('/nfts/textToImage', [MintedNftsController::class, 'generateTextToImage']);
 Route::post('/nfts/share/discord', [MintedNftsController::class, 'discordShare']);
-
 Route::post('/project/create', [ProjectController::class, 'create']);
+
 // Unity routes
 Route::get('/unity', [UnityController::class, 'index']);
 Route::post('/unity', [UnityController::class, 'store']);
@@ -61,10 +76,14 @@ Route::post('/unity/auth', [UnityController::class, 'login']);
 // AI Generation Routes
 Route::post('/ai/create/tshirt', [AiGenerationController::class, 'generateTshirtTexture']);
 
+Route::post('/nfts/generate/thirdweb', [LeanCanvasController::class, 'generateThirdWebSignature']);
+Route::post('/nfts/generate/clientsecret', [LeanCanvasController::class, 'generateClientSecret']);
+
 Route::middleware('auth:sanctum')->group(function () {
     // Minted nfts routes
     Route::post('/nfts', [MintedNftsController::class, 'storeNFT']);
     Route::post('/nfts/draft', [MintedNftsController::class, 'saveDraft']);
+
 
     // get NFTS and Drafts for profile
     Route::get('/nfts', [MintedNftsController::class, 'showNftsAndDrafts']);

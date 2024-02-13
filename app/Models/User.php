@@ -6,9 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Cashier\Billable;
 use Illuminate\Support\Facades\Config;
-use App\Traits\StripCard;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\MintedNfts;
@@ -42,7 +40,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'paper_token',
         'paper_wallet_address',
         'white_listed',
-        'credits'
+        'credits',
+        'rpm_user_id',
+        'rpm_user_token',
+        'rpm_avatar_id',
+        'rpm_image_url',
+        'rpm_assets',
+        'rpm_body_type',
+        'rpm_glb_file',
     ];
 
     /**

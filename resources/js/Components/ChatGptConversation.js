@@ -2,18 +2,14 @@ import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import RightArrowIcon from "../SVGs/RightArrowIcon";
 import React, { useState } from "react";
 
-const ChatGptConversation = () => {
+const ChatGptConversation = ({ sendMessage, chatgptLoading }) => {
     const [question, setQuestion] = useState("");
-
-    const askQuestion = () => {
-        setQuestion("");
-        console.log(question);
-        // todo: axios call to backend
-    };
 
     return (
         <InputGroup
-            w={"75vw"}
+            marginTop={"1rem"}
+            height={"40px"}
+            w={"65%"}
             borderRadius={"26px"}
             bg={"#fff"}
             boxShadow={"0px 0px 15.7px 0px rgba(255, 255, 255, 0.39)"}
@@ -25,8 +21,9 @@ const ChatGptConversation = () => {
                 value={question}
                 onKeyDown={(e) => {
                     // check for enter press
-                    if (e.key === "Enter") {
-                        askQuestion();
+                    if (e.key === "Enter" && !chatgptLoading) {
+                        setQuestion("");
+                        sendMessage(question);
                     }
                 }}
                 onChange={(e) => {
@@ -35,8 +32,14 @@ const ChatGptConversation = () => {
             />
             <InputRightElement
                 p={2}
-                _hover={{ cursor: "pointer" }}
-                onClick={askQuestion}
+                opacity={chatgptLoading ? 0.5 : 1}
+                _hover={{ cursor: chatgptLoading ? "not-allowed" : "pointer" }}
+                onClick={() => {
+                    if (!chatgptLoading) {
+                        setQuestion("");
+                        sendMessage(question);
+                    }
+                }}
             >
                 <RightArrowIcon />
             </InputRightElement>

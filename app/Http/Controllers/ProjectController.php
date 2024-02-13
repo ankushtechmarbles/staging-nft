@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MintProjectRequest;
+use App\Http\Requests\ChatgptAssistantRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\MintedNfts;
@@ -356,7 +356,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function generateMintSignature(MintProjectRequest $request)
+    public function generateMintSignature(ChatgptAssistantRequest $request)
     {
         // get logged in user
         $user = $request->user();

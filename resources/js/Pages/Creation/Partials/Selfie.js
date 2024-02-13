@@ -1,13 +1,20 @@
-import { Heading, Stack, Button, Text, Input, Image } from "@chakra-ui/react";
+import {
+    Heading,
+    Stack,
+    Button,
+    Text,
+    Input,
+    Image,
+    Box,
+} from "@chakra-ui/react";
 import React, { useCallback, useRef } from "react";
+import CircleSpinnerIcon from "../../../SVGs/CircleSpinnerIcon";
 import { useAppContext } from "../../../Context/AppContext";
 import PhotoModal from "../../../Components/PhotoModal";
 
 const Selfie = () => {
     const { dispatch, imageUpload } = useAppContext();
     const inputRef = useRef();
-
-    console.log(imageUpload);
 
     const userUploadImage = useCallback(
         (e) => {
@@ -26,8 +33,21 @@ const Selfie = () => {
     }, [inputRef]);
 
     return (
-        <Stack justifyContent={"center"} alignItems={"center"}>
-            <Heading>Take a selfie for face accuracy</Heading>
+        <Stack
+            justifyContent={"center"}
+            alignItems={"center"}
+            overflow={"hidden"}
+            width={"full"}
+            paddingLeft={"35rem"}
+            pointerEvents={"none"}
+        >
+            <Heading
+                color={"white"}
+                textShadow={"0px 0px 5px #000"}
+                fontWeight={"normal"}
+            >
+                Take a selfie for face accuracy
+            </Heading>
             <Image
                 width={imageUpload ? "321px" : "auto"}
                 height={imageUpload ? "361px" : "auto"}
@@ -40,8 +60,14 @@ const Selfie = () => {
                 }
             />
             <PhotoModal />
-            <Text>Or</Text>
-            <Button textTransform={"uppercase"} onClick={clickInput}>
+            <Text color={"white"}>OR</Text>
+            <Button
+                pointerEvents={"all"}
+                borderRadius={"9px"}
+                boxShadow={"0px 0px 3.5px 2px rgba(0, 0, 0, 0.30)"}
+                textTransform={"uppercase"}
+                onClick={clickInput}
+            >
                 Choose existing photo
             </Button>
             <Input

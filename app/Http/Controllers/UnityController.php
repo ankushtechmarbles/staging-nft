@@ -31,8 +31,6 @@ class UnityController extends Controller
             return $this->jsonValidation($validator);
         }
 
-        Log::info($request->all());
-
         // make http post request with guzzle
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', 'http://localhost:3000/web3', [

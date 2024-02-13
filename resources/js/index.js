@@ -2,6 +2,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "../css/app.css";
+import { AvatarContext } from "./Context/AvatarContext";
 import { AppContext } from "./Context/AppContext";
 import { default as AuthIndex } from "./Pages/Auth/Index";
 import { default as CreationIndex } from "./Pages/Creation/Index";
@@ -36,26 +37,20 @@ if (root) {
     root.render(
         <ThirdwebProvider
             activeChain="mumbai"
-            clientId="YOUR_CLIENT_ID"
-            supportedWallets={[
-                metamaskWallet(),
-                walletConnect(),
-                localWallet(),
-                embeddedWallet({
-                    auth: {
-                        options: ["email", "google", "apple", "facebook"],
-                    },
-                }),
-            ]}
-            // authConfig={{
-            //     authUrl: "/api/auth",
-            //     domain: "https://example.com",
-            // }}
+            clientId="bf69d74a5e5a7011d62e0b5bf7f5606c"
+            authConfig={{
+                domain: "http://localhost:8000",
+                authUrl: "/api/auth",
+            }}
+            autoConnect={false}
+            supportedWallets={[metamaskWallet(), embeddedWallet()]}
         >
             <ChakraProvider theme={theme}>
                 <ColorModeScript initialColorMode={"light"} />
                 <AppContext>
-                    <App />
+                    <AvatarContext>
+                        <App />
+                    </AvatarContext>
                 </AppContext>
             </ChakraProvider>
         </ThirdwebProvider>,

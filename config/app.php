@@ -177,7 +177,8 @@ return [
 
         // Socialite
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        App\Providers\ChatgptServiceProvider::class,
+        App\Providers\RpmServiceProvider::class,
     ],
 
     /*

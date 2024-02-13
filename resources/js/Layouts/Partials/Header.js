@@ -47,8 +47,8 @@ const Header = () => {
 
     return (
         <Flex
-            w={"100vw"}
-            h={"8.5rem"}
+            zIndex={20}
+            paddingTop={"2rem"}
             alignItems={"flex-end"}
             justifyContent={"space-between"}
         >
@@ -72,7 +72,7 @@ const Header = () => {
                 }
                 borderRadius={8}
                 px={7}
-                py={1}
+                py={2}
             >
                 <ColorModeButton />
                 <Divider

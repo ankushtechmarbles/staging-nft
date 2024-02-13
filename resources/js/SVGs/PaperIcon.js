@@ -10,10 +10,15 @@ const PaperIcon = () => {
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
         >
-            <rect opacity="0.72" width="21" height="40" fill="url(#pattern0)" />
+            <rect
+                opacity="0.72"
+                width="21"
+                height="40"
+                fill="url(#pattern70)"
+            />
             <defs>
                 <pattern
-                    id="pattern0"
+                    id="pattern70"
                     patternContentUnits="objectBoundingBox"
                     width="1"
                     height="1"

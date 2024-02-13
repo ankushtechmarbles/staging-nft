@@ -38,6 +38,11 @@ const PhotoModal = () => {
     return (
         <>
             <Button
+                pointerEvents={"all"}
+                py={7}
+                px={24}
+                fontSize={"20px"}
+                boxShadow={"0px 0px 3.5px 2px rgba(0, 0, 0, 0.30)"}
                 onClick={() => {
                     if (imageUpload) {
                         dispatch({ type: "SET_IMAGE_UPLOAD", payload: null });

@@ -11,6 +11,17 @@ const mix = require("laravel-mix");
  |
  */
 
+mix.webpackConfig({
+    resolve: {
+        fallback: {
+            stream: require.resolve("stream-browserify"),
+            http: require.resolve("stream-http"),
+            https: require.resolve("https-browserify"),
+            zlib: require.resolve("browserify-zlib"),
+        },
+    },
+});
+
 mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .sourceMaps();

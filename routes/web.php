@@ -116,12 +116,6 @@ Route::get('/auth/register', function () {
 //    return view('reactApp');
 })->name('register');
 
-
-// Socialite
-Route::get('login/{provider}', [SocialController::class, 'redirect']);
-Route::get('login/{provider}/callback',[SocialController::class, 'callback']);
-
-
 // user
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
@@ -170,4 +164,12 @@ Route::get('/profile', function () {
 Route::get('/canvas', [LeanCanvasController::class, 'index']);
 
 // React onboarding
-Route::view('/react/{path?}', 'app')->where('path', '.*');
+Route::view('/react/{path?}', 'app')->where('path', '(?!api).*');;
+Route::view('/google/callback', 'app')->where('path', '(?!api).*');;
+Route::view('/facebook/callback', 'app')->where('path', '(?!api).*');;
+
+// Socialite
+Route::get('/auth/{provider}/login', [SocialController::class, 'redirect']);
+
+// reset password index
+Route::get('/reset-password/', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm']);
